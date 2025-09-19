@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tray Tayo</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      background-color: #fff;
+      color: #333;
+    }
+
+    /* Navbar */
+    header {
+      background-color: #f9d6aa;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 40px;
+      position: sticky;
+      top: 0;
+    }
+    .logo {
+      font-weight: bold;
+      font-size: 20px;
+      letter-spacing: 2px;
+    }
+    nav {
+      flex-grow: 1;
+      display: flex;
+      justify-content: center;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      margin: 0;
+      padding: 0;
+    }
+    nav ul li {
+      margin: 0 20px;
+    }
+    nav ul li a {
+      text-decoration: none;
+      color: #000;
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+    .icons {
+      display: flex;
+      gap: 20px;
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    /* Hero Section */
+    .hero {
+      background-color: #f0f2f3;
+      text-align: center;
+      padding: 80px 20px;
+    }
+    .hero h1 {
+      font-size: 48px;
+      margin-bottom: 15px;
+      font-weight: bold;
+    }
+    .hero p {
+      font-size: 16px;
+      color: #555;
+      margin-bottom: 30px;
+    }
+    .hero .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+    }
+    .btn {
+      padding: 12px 25px;
+      border-radius: 5px;
+      border: none;
+      cursor: pointer;
+      font-weight: 600;
+    }
+    .btn-primary {
+      background-color: #f9d6aa;
+      border: 1px solid #d1a871;
+    }
+    .btn-secondary {
+      background-color: #fff;
+      border: 1px solid #ccc;
+    }
+
+    /* Section Title */
+    section {
+      padding: 40px 20px;
+    }
+    section h2 {
+      font-size: 28px;
+      letter-spacing: 3px;
+      margin-bottom: 20px;
+      font-weight: bold;
+    }
+
+    /* Cards */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background-color: #f0f2f3;
+      height: 200px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #999;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header>
+    <div class="logo">LOGO</div>
+    <nav>
+      <ul>
+        <li><a href="#">HOME</a></li>
+        <li><a href="#">TRAYS</a></li>
+        <li><a href="#">BEST SELLER</a></li>
+        <li><a href="#">CHEFS</a></li>
+        <li><a href="#">ABOUT</a></li>
+      </ul>
+    </nav>
+    <div class="icons">
+      🔍 👤 🛒
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>All the products<br>you ever wanted</h1>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+      Suspendisse varius enim in eros elementum tristique.</p>
+    <div class="buttons">
+      <button class="btn btn-primary">Button</button>
+      <button class="btn btn-secondary">Button</button>
+    </div>
+  </section>
+
+  <!-- Family Tray Section -->
+  <section>
+    <h2>FAMILY TRAY</h2>
+    <div class="cards">
+      <div class="card">Image Placeholder</div>
+      <div class="card">Image Placeholder</div>
+      <div class="card">Image Placeholder</div>
+    </div>
+  </section>
+
+</body>
+</html>
