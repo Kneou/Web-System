@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tray Tayo</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      background-color: #fff;
+      color: #333;
+    }
+
+    /* Navbar */
+    header {
+      background-color: #f9d6aa;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 40px;
+      position: sticky;
+      top: 0;
+    }
+    .logo img {
+      height: 70px; 
+      width: auto;
+    }
+    nav {
+      flex-grow: 1;
+      display: flex;
+      justify-content: center;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      margin: 0;
+      padding: 0;
+    }
+    nav ul li {
+      margin: 0 20px;
+    }
+    nav ul li a {
+      text-decoration: none;
+      color: #000;
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+    .icons {
+      display: flex;
+      gap: 20px;
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    /* Hero Section */
+    .hero {
+      background-color: #f0f2f3;
+      text-align: center;
+      padding: 80px 20px;
+    }
+    .hero h1 {
+      font-size: 48px;
+      margin-bottom: 15px;
+      font-weight: bold;
+    }
+    .hero p {
+      font-size: 16px;
+      color: #555;
+      margin-bottom: 30px;
+    }
+    .hero .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+    }
+    .btn {
+      padding: 12px 25px;
+      border-radius: 5px;
+      border: none;
+      cursor: pointer;
+      font-weight: 600;
+    }
+    .btn-primary {
+      background-color: #f9d6aa;
+      border: 1px solid #d1a871;
+    }
+    .btn-secondary {
+      background-color: #fff;
+      border: 1px solid #ccc;
+    }
+
+    /* Section Title */
+    section {
+      padding: 40px 20px;
+    }
+    section h2 {
+      font-size: 28px;
+      letter-spacing: 3px;
+      margin-bottom: 20px;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    /* Cards */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background-color: #f0f2f3;
+      border-radius: 10px;
+      overflow: hidden;
+      text-align: center;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+    .card p {
+      margin: 10px 0;
+      font-weight: bold;
+      color: #333;
+    }
+
+    /* Footer */
+    footer {
+      background: #fff;
+      border-top: 1px solid #eee;
+      padding: 20px 40px;
+      text-align: center;
+      margin-top: 50px;
+    }
+    .subscribe {
+      background: #f9d6aa;
+      padding: 15px;
+      margin: 20px auto;
+      width: fit-content;
+      font-weight: bold;
+    }
+    .socials {
+      margin-top: 15px;
+      font-size: 20px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header>
+    <div class="logo">
+      <img src="C:\Users\user\Desktop\Monina\MMDC\3rd Year\Web System - Tray Tayo\Web-System\img\logo.png" alt="TrayTayo Logo">
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#">HOME</a></li>
+        <li><a href="#">TRAYS</a></li>
+        <li><a href="#">BEST SELLER</a></li>
+        <li><a href="#">CHEFS</a></li>
+        <li><a href="#">ABOUT</a></li>
+      </ul>
+    </nav>
+    <div class="icons">
+      🔍 👤 🛒
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>Delicious Food, Anytime!</h1>
+    <p>Order your favorite meals and get them delivered fast.</p>
+    <div class="buttons">
+      <button class="btn btn-primary">Order Now</button>
+      <button class="btn btn-secondary">Learn More</button>
+    </div>
+  </section>
+
+  <!-- Family Tray Section -->
+  <section>
+    <h2>FAMILY TRAY</h2>
+    <div class="cards">
+      <div class="card">
+        <img src="C:\Users\user\Desktop\Monina\MMDC\3rd Year\Web System - Tray Tayo\Web-System\img\kare kare.jpg" alt="Beef Kare-Kare">
+        <p>Beef</p>
+      </div>
+      <div class="card">
+        <img src="C:\Users\user\Desktop\Monina\MMDC\3rd Year\Web System - Tray Tayo\Web-System\img\Chicken adobo.png" alt="Chicken">
+        <p>Chicken</p>
+      </div>
+      <div class="card">
+        <img src="C:\Users\user\Desktop\Monina\MMDC\3rd Year\Web System - Tray Tayo\Web-System\img\pork ribs.jpg" alt="Pork Ribs">
+        <p>Pork</p>
+      </div>
+      <div class="card">
+        <img src="C:\Users\user\Desktop\Monina\MMDC\3rd Year\Web System - Tray Tayo\Web-System\img\chopseuy.jpg" alt="Chopseuy">
+        <p>Vegetables</p>
+      </div>
+      <div class="card">
+        <img src="C:\Users\user\Desktop\Monina\MMDC\3rd Year\Web System - Tray Tayo\Web-System\img\buko pandan.jpg" alt="Buko Pandan">
+        <p>Desserts</p>
+      </div>
+      <div class="card">
+        <img src="C:\Users\user\Desktop\Monina\MMDC\3rd Year\Web System - Tray Tayo\Web-System\img\fries.jpg" alt="French Fries">
+        <p>Snacks</p>
+      </div>
+    </div>
+  </section>
+
+<!-- Footer -->
+  <footer>
+    <div class="subscribe">SUBSCRIBE TO OUR EMAILS</div>
+    <div class="socials">
+      🌐 📷 🐦
+    </div>
+  </footer>
+
+</body>
+</html>

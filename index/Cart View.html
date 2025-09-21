@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tray Tayo - Cart</title>
+  <style>
+    /* ====== GLOBAL STYLES ====== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      background: #fdfdfc;
+      color: #333;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* ====== NAVBAR ====== */
+    header {
+      background: #fce7c8;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      border-bottom: 1px solid #e0d6c8;
+    }
+
+    .logo img {
+      height: 70px; 
+      width: auto;
+    }
+
+    nav ul {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+      font-weight: bold;
+    }
+
+    .icons {
+      display: flex;
+      gap: 1.5rem;
+      font-size: 1.2rem;
+    }
+
+    /* ====== CART SECTION ====== */
+    .cart-container {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .cart-items {
+      flex: 2;
+    }
+
+    .cart-title {
+      font-size: 2rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+    }
+
+    .cart-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #fff;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      border-radius: 1rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    }
+
+    .cart-item img {
+      width: 80px;
+      border-radius: 0.5rem;
+    }
+
+    .item-info {
+      flex: 1;
+      margin-left: 1rem;
+    }
+
+    .item-info h4 {
+      font-size: 1.1rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .available {
+      font-size: 0.8rem;
+      color: green;
+    }
+
+    .item-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .qty-btn {
+      background: #fce7c8;
+      border: none;
+      padding: 0.4rem 0.8rem;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    .price {
+      font-weight: bold;
+      margin-left: 1rem;
+    }
+
+    /* ====== ORDER SUMMARY ====== */
+    .summary {
+      flex: 1;
+      background: #fff;
+      padding: 1.5rem;
+      border-radius: 1rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+      height: fit-content;
+    }
+
+    .summary h3 {
+      margin-bottom: 1rem;
+    }
+
+    .summary p {
+      display: flex;
+      justify-content: space-between;
+      margin: 0.5rem 0;
+    }
+
+    .summary .total {
+      font-size: 1.3rem;
+      font-weight: bold;
+      margin-top: 1rem;
+    }
+
+    .checkout-btn {
+      background: #8b5e34;
+      color: #fff;
+      border: none;
+      width: 100%;
+      padding: 0.8rem;
+      border-radius: 0.8rem;
+      font-size: 1rem;
+      margin-top: 1.5rem;
+      cursor: pointer;
+    }
+
+    /* Footer */
+    footer {
+      background: #fff;
+      border-top: 1px solid #eee;
+      padding: 20px 40px;
+      text-align: center;
+    }
+    .subscribe {
+      background: #f9d6aa;
+      padding: 15px;
+      margin: 20px auto;
+      width: fit-content;
+      font-weight: bold;
+    }
+    .socials {
+      margin-top: 15px;
+      font-size: 20px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+  </style>
+</head>
+<body>
+  <!-- ===== HEADER ===== -->
+  <header>
+    <div class="logo">
+      <img src="C:\Users\user\Desktop\Monina\MMDC\3rd Year\Web System - Tray Tayo\Web-System\img\logo.png" alt="TrayTayo Logo">
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#">HOME</a></li>
+        <li><a href="#">TRAYS</a></li>
+        <li><a href="#">BEST SELLER</a></li>
+        <li><a href="#">CHEFS</a></li>
+        <li><a href="#">ABOUT</a></li>
+      </ul>
+    </nav>
+    <div class="icons">
+      <span>🔍</span>
+      <span>👤</span>
+      <span>🛒</span>
+    </div>
+  </header>
+
+  <!-- ===== CART ===== -->
+  <div class="cart-container">
+    <div class="cart-items">
+      <h2 class="cart-title">Your Cart</h2>
+
+      <!-- ITEM -->
+      <div class="cart-item">
+        <img src="C:\Users\user\Desktop\Monina\MMDC\3rd Year\Web System - Tray Tayo\Web-System\img\fried chicken.png" alt="Fried Chicken">
+        <div class="item-info">
+          <h4>Fried Chicken</h4>
+          <p class="available">✔ Available Today</p>
+        </div>
+        <div class="item-actions">
+          <button class="qty-btn">-</button>
+          <span>2</span>
+          <button class="qty-btn">+</button>
+          <span class="price">₱340.00</span>
+        </div>
+      </div>
+
+      <div class="cart-item">
+        <img src="C:\Users\user\Desktop\Monina\MMDC\3rd Year\Web System - Tray Tayo\Web-System\img\tofu sisig.jpg" alt="Tofu Sisig">
+        <div class="item-info">
+          <h4>Tofu Sisig</h4>
+          <p class="available">✔ Available Today</p>
+        </div>
+        <div class="item-actions">
+          <button class="qty-btn">-</button>
+          <span>1</span>
+          <button class="qty-btn">+</button>
+          <span class="price">₱180.00</span>
+        </div>
+      </div>
+
+      <div class="cart-item">
+        <img src="C:\Users\user\Desktop\Monina\MMDC\3rd Year\Web System - Tray Tayo\Web-System\img\sinigang na baboy.jpg" alt="Sinigang na Baboy">
+        <div class="item-info">
+          <h4>Sinigang na Baboy</h4>
+          <p class="available">✔ Available Today</p>
+        </div>
+        <div class="item-actions">
+          <button class="qty-btn">-</button>
+          <span>2</span>
+          <button class="qty-btn">+</button>
+          <span class="price">₱540.00</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- SUMMARY -->
+    <div class="summary">
+      <h3>Order Summary</h3>
+      <p><span>Subtotal</span><span>₱1,940.00</span></p>
+      <p><span>Tax (12%)</span><span>₱232.80</span></p>
+      <p><span>Delivery</span><span>₱150.00</span></p>
+      <p class="total"><span>Total</span><span>₱2,322.80</span></p>
+      <button class="checkout-btn">Proceed to Checkout</button>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="subscribe">SUBSCRIBE TO OUR EMAILS</div>
+    <div class="socials">
+      🌐 📷 🐦
+    </div>
+  </footer>
+</body>
+</html>
