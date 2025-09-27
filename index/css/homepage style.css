@@ -1,0 +1,143 @@
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background-color: #fff;
+  color: #333;
+}
+
+/* Navbar */
+header {
+  background-color: #f9d6aa;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 40px;
+  position: sticky;
+  top: 0;
+}
+.logo img {
+  height: 70px; 
+  width: auto;
+}
+nav {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+}
+nav ul {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+nav ul li {
+  margin: 0 20px;
+}
+nav ul li a {
+  text-decoration: none;
+  color: #000;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+.icons {
+  display: flex;
+  gap: 20px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* Hero Section */
+.hero {
+  background-color: #f0f2f3;
+  text-align: center;
+  padding: 80px 20px;
+}
+.hero h1 {
+  font-size: 48px;
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+.hero p {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 30px;
+}
+.hero .buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+.btn {
+  padding: 12px 25px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+}
+.btn-primary {
+  background-color: #f9d6aa;
+  border: 1px solid #d1a871;
+}
+.btn-secondary {
+  background-color: #fff;
+  border: 1px solid #ccc;
+}
+
+/* Section Title */
+section {
+  padding: 40px 20px;
+}
+section h2 {
+  font-size: 28px;
+  letter-spacing: 3px;
+  margin-bottom: 20px;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* Cards */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+.card {
+  background-color: #f0f2f3;
+  border-radius: 10px;
+  overflow: hidden;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+.card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+.card p {
+  margin: 10px 0;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Footer */
+footer {
+  background: #fff;
+  border-top: 1px solid #eee;
+  padding: 20px 40px;
+  text-align: center;
+  margin-top: 50px;
+}
+.subscribe {
+  background: #f9d6aa;
+  padding: 15px;
+  margin: 20px auto;
+  width: fit-content;
+  font-weight: bold;
+}
+.socials {
+  margin-top: 15px;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
