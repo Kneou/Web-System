@@ -405,6 +405,115 @@ body {
   background: #6d4727;
 }
 
+ /* ========== LOGIN PAGE STYLES ========== */
+.login-container {
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 30px;
+  background: #fff;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  border-radius: 8px;
+  text-align: center;
+}
+.login-container h2 {
+  color: #5a3c2a;
+  margin-bottom: 5px;
+}
+.login-container p {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+/* Tabs */
+.tabs {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+.tabs span {
+  cursor: pointer;
+}
+.tabs .active {
+  border-bottom: 2px solid #5a3c2a;
+  padding-bottom: 5px;
+}
+
+/* Form */
+.form-group {
+  margin-bottom: 15px;
+  text-align: left;
+}
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+.form-input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+.options {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  margin-bottom: 20px;
+}
+.btn {
+  width: 100%;
+  padding: 12px;
+  background: #5a3c2a;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+.btn:hover {
+  background: #f9d6aa;
+  color: #666;
+}
+
+/* Divider */
+.divider {
+  margin: 20px 0;
+  font-size: 14px;
+  color: #666;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.divider::before,
+.divider::after {
+  content: "";
+  flex: 1;
+  border-bottom: 1px solid #ccc;
+  margin: 0 10px;
+}
+
+/* Social buttons */
+.social-login {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
+.social-btn {
+  margin-right: 8px;
+  font-size: 15px;
+  vertical-align: middle;
+}
+
+.social-btn:hover {
+  background: #ffffff;
+}
+
 
 /* ========== RESPONSIVE DESIGN ========== */
 @media (max-width: 768px) {
