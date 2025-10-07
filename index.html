@@ -3,91 +3,61 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tray Tayo</title>
-  <link rel="stylesheet" href="css/style.css">
+  <title>TrayTayo</title>
+  <!-- Bootstrap CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome CDN -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #fff8f0;
+      font-family: 'Poppins', sans-serif;
+    }
+    .navbar {
+      background-color: #f8d4a7;
+    }
+    .nav-link {
+      color: #3b2a1a !important;
+      font-weight: 600;
+    }
+    .nav-link:hover {
+      color: #a86432 !important;
+    }
+  </style>
 </head>
 <body>
-
   <!-- Navbar -->
-  <header id="navbar">
-    <div class="logo">
-      <img src="img/logo.png" alt="TrayTayo Logo">
-    </div>
-    <nav>
-      <ul>
-        <li><a href="#">HOME</a></li>
-        <li><a href="#">TRAYS</a></li>
-        <li><a href="#">BEST SELLER</a></li>
-        <li><a href="#">CHEFS</a></li>
-        <li><a href="#">ABOUT</a></li>
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <a class="navbar-brand" href="#">
+        <img src="traytayo-logo.png" alt="TrayTayo Logo" height="50">
+      </a>
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a href="#" class="nav-link">HOME</a></li>
+        <li class="nav-item"><a href="#" class="nav-link">TRAYS</a></li>
+        <li class="nav-item"><a href="#" class="nav-link">BEST SELLER</a></li>
+        <li class="nav-item"><a href="#" class="nav-link">CHEFS</a></li>
+        <li class="nav-item"><a href="#" class="nav-link">ABOUT</a></li>
+        <li class="nav-item">
+          <a href="#"><i class="fa-solid fa-magnifying-glass fa-lg mx-3"></i></a>
+        </li>
+        <li class="nav-item">
+          <a href="login.html"><i class="fa-solid fa-user fa-lg mx-3"></i></a>
+        </li>
+        <li class="nav-item">
+          <a href="#"><i class="fa-solid fa-cart-shopping fa-lg"></i></a>
+        </li>
       </ul>
-    </nav>
-    <div id="icons">
-      <i class="fas fa-search"></i>
-      <i class="fas fa-user"></i>
-      <i class="fas fa-shopping-cart"></i>
     </div>
-  </header>
+  </nav>
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <h1>Delicious Food, Anytime!</h1>
-    <p>Order your favorite meals and get them delivered fast.</p>
-    <div class="buttons">
-      <button class="btn btn-primary">Order Now</button>
-      <button class="btn btn-secondary">Learn More</button>
-    </div>
-  </section>
+  <!-- Content -->
+  <div class="container text-center mt-5">
+    <h1>Welcome to TrayTayo!</h1>
+    <p>Your go-to food tray provider for any occasion.</p>
+  </div>
 
-  <!-- Family Tray Section -->
-  <section id="family-tray">
-    <h2>FAMILY TRAY</h2>
-    <div class="cards">
-      <div class="card">
-        <img src="img/kare kare.jpg" alt="Beef Kare-Kare">
-        <div class="food-description">Tender beef in rich peanut sauce with fresh vegetables</div>
-        <p>Beef</p>
-      </div>
-      <div class="card">
-        <img src="img/Chicken adobo.png" alt="Chicken">
-        <div class="food-description">Classic Filipino chicken adobo with soy sauce and vinegar</div>
-        <p>Chicken</p>
-      </div>
-      <div class="card">
-        <img src="img/pork ribs.jpg" alt="Pork Ribs">
-        <div class="food-description">Succulent pork ribs with special house sauce</div>
-        <p>Pork</p>
-      </div>
-      <div class="card">
-        <img src="img/chopseuy.jpg" alt="Chopseuy">
-        <div class="food-description">Fresh mixed vegetables with shrimp and pork</div>
-        <p>Vegetables</p>
-      </div>
-      <div class="card">
-        <img src="img/buko pandan.jpg" alt="Buko Pandan">
-        <div class="food-description">Refreshing coconut and pandan flavored dessert</div>
-        <p>Desserts</p>
-      </div>
-      <div class="card">
-        <img src="img/fries.jpg" alt="French Fries">
-        <div class="food-description">Crispy golden fries with your choice of dip</div>
-        <p>Snacks</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer>
-    <div class="subscribe">SUBSCRIBE TO OUR EMAILS</div>
-    <div class="socials">
-      <i class="fas fa-globe"></i>
-      <i class="fab fa-instagram"></i>
-      <i class="fab fa-twitter"></i>
-    </div>
-  </footer>
-
-  <!-- Font Awesome Icons -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/js/all.min.js"></script>
-
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
