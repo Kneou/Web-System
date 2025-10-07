@@ -1,62 +1,137 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>About Page</title>
-<style>
-body{font-family:Arial,sans-serif;margin:0;padding:0;background:#fff;color:#222}
-header{background:#f9e8d9;padding:18px 28px;display:flex;justify-content:space-between;align-items:center}
-nav a{margin:0 10px;text-decoration:none;color:#000;font-size:14px}
-main{max-width:1100px;margin:40px auto;padding:0 20px;text-align:center}
-.section-title{font-size:28px;font-weight:700;margin-bottom:40px}
-.founder-section{display:flex;align-items:flex-start;gap:40px;justify-content:center;margin-bottom:60px;text-align:left}
-.thumb{background:#f0f0f0;width:250px;height:300px;border-radius:8px}
-.founder-text h3{margin:0;font-size:20px;font-weight:700}
-.founder-text p{font-size:14px;line-height:1.6;margin-top:8px;color:#555;max-width:500px}
-.social-icons{display:flex;justify-content:center;gap:12px;margin-top:20px}
-.footer-sub{margin-top:80px;display:flex;justify-content:space-between;align-items:center;padding:20px;border-top:1px solid #eee}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About | Tray Tayo</title>
+  <link rel="stylesheet" href="css/style.css">
+  
 </head>
 <body>
-<header>
-  <div>LOGO</div>
-  <div>TRAY TAYO</div>
-  <nav>
-    <a href="#">HOME</a><a href="#">TRAYS</a><a href="#">BEST SELLER</a><a href="#">CHEFS</a><a href="#">ABOUT</a>
-  </nav>
-  <div>🔍 👤 🛒</div>
-</header>
-<main>
-  <button onclick="window.location.href='index.html'" class="back-button" style="display:inline-flex;align-items:center;gap:8px;padding:10px 20px;margin:20px;background-color:#f9d6aa;color:#2b2b2b;text-decoration:none;border-radius:5px;font-weight:600;transition:all 0.3s ease;border:1px solid #d1a871;font-size:16px;"><i class='fas fa-arrow-left'></i> Back to Home</button>
-  </a>
-  <div class="section-title">ABOUT</div>
+  <!-- NAVBAR -->
+  <header id="navbar">
+    <div class="logo"><img src="img/logo.png" alt="TrayTayo Logo"></div>
+    <nav>
+      <ul>
+        <li><a href="index.html">HOME</a></li>
+        <li><a href="Trays.html">TRAYS</a></li>
+        <li><a href="Best-Seller.html">BEST SELLER</a></li>
+        <li><a href="Chef.html">CHEFS</a></li>
+        <li><a href="About.html">ABOUT</a></li>
+      </ul>
+    </nav>
+    <div id="icons">
+    <a href="login.html">
+      <i class="fas fa-user"></i>
+    </a>
+    <a href="Cart-View.html">
+      <i class="fas fa-shopping-cart"></i>
+    </a>
+  </header>
 
-  <h2 style="font-size:22px;font-weight:700;margin-bottom:30px">A note from the founder</h2>
-  <div class="founder-section">
-    <div class="thumb"></div>
-    <div class="founder-text">
-      <h3>John</h3>
-      <div style="font-weight:600;margin-bottom:6px">Founder, owner and chief designer</div>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+  <!-- ABOUT CONTENT -->
+  <main>
+    <div class="page-container">
+    <div class="section-title">ABOUT</div>
+
+    <h2 style="font-size:22px;font-weight:700;margin-bottom:30px">
+      A Note From the Founder
+    </h2>
+
+    <div class="founder-section">
+      <div class="thumb" style="background-image:url('img/founder.jpg');"></div>
+        <div class="founder-circle">
+  <img src="img/founder.png" alt="Milagros Rodriguez">
+  </div>
+      <div class="founder-text">
+        <h3>Jordi Rodriguez</h3>
+        <div style="font-weight:600;margin-bottom:6px">
+          Founder, Owner and Chief Designer
+        </div>
+
+        <p>
+          Tray Tayo was born in 2020 — during one of the most uncertain moments of our lives.
+          What started as a simple passion for home-cooked meals slowly grew into something
+          beautiful: a way to bring comfort, connection, and warmth to every household.
+        </p>
+
+        <p style="margin-top:15px;">
+          I grew up in a family where gatherings were always centered around food. 
+          Mas masarap kumain kapag sama-sama. That’s why every Tray Tayo dish is prepared 
+          with intention — from the ingredients we choose to the care we put into every tray.
+        </p>
+
+        <p style="margin-top:15px;">
+          Thank you for supporting our small business and allowing us to be part of your 
+          celebrations. It is my joy to prepare something special for you and the people 
+          you love.
+        </p>
+
+        <p style="margin-top:15px;font-weight:600;">— Jordi</p>
+      </div>
     </div>
-  </div>
 
-  <div class="social-icons">FB · IG · TikTok · YouTube · Pinterest</div>
-  <h2 style="font-weight:500;font-style:italic;margin-top:20px">Follow us @instant</h2>
-</main>
-<div class="footer-sub">
-  <div>
-    <label>SUBSCRIBE TO OUR EMAILS</label><br>
-    <input type="text" placeholder="Email..." style="padding:8px;border:1px solid #eee;border-radius:4px;width:200px;">
-  </div>
-  <div>📷 🖤 🐦</div>
-</div>
+    <!-- FAQ SECTION -->
+    <div class="faq-section">
+      <div class="faq-title">Frequently Asked Questions</div>
 
-  <!-- Font Awesome Icons -->
+      <div class="faq-item">
+        <h4>What is Tray Tayo?</h4>
+        <p>
+          Tray Tayo is a home-style food tray service offering curated meals perfect for
+          gatherings, celebrations, gifting, and potlucks.
+        </p>
+      </div>
+
+      <div class="faq-item">
+        <h4>Do you accept same-day orders?</h4>
+        <p>
+          Yes — we accept same-day orders depending on availability.  
+          However, we recommend ordering 1–2 days in advance.
+        </p>
+      </div>
+
+      <div class="faq-item">
+        <h4>Where are you located?</h4>
+        <p>
+          We operate in the Philippines and deliver within our designated service areas.
+        </p>
+      </div>
+
+      <div class="faq-item">
+        <h4>Do you customize trays?</h4>
+        <p>
+          Yes, customization is available depending on the request and ingredient availability.
+        </p>
+      </div>
+
+      <div class="faq-item">
+        <h4>How can I place an order?</h4>
+        <p>
+          You may order through our website or contact us on our official social media pages.
+        </p>
+      </div>
+    </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="subscribe">SUBSCRIBE TO OUR EMAILS</div>
+    <div class="socials">
+      <i class="fas fa-globe"></i>
+      <i class="fab fa-instagram"></i>
+      <i class="fab fa-twitter"></i>
+    </div>
+  </footer>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/js/all.min.js"></script>
+
+
+
+  <!-- SCRIPT -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/js/all.min.js"></script>
 
   <script>
-    // Cart management functions
+    // Cart badge logic
     function getCart() {
       const cart = localStorage.getItem('cart');
       return cart ? JSON.parse(cart) : [];
@@ -66,16 +141,11 @@ main{max-width:1100px;margin:40px auto;padding:0 20px;text-align:center}
       const cart = getCart();
       const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
       
-      // Update cart icon in navbar
       const cartIcon = document.querySelector('.fa-shopping-cart');
       if (cartIcon) {
-        // Remove existing badge if any
         const existingBadge = cartIcon.parentElement.querySelector('.cart-badge');
-        if (existingBadge) {
-          existingBadge.remove();
-        }
+        if (existingBadge) existingBadge.remove();
         
-        // Add badge if there are items
         if (totalItems > 0) {
           const badge = document.createElement('span');
           badge.className = 'cart-badge';
@@ -101,20 +171,8 @@ main{max-width:1100px;margin:40px auto;padding:0 20px;text-align:center}
       }
     }
 
-    // Initialize cart icon on page load
-    window.addEventListener('DOMContentLoaded', () => {
-      updateCartIcon();
-      
-      // Add cart icon click functionality
-      const cartIcon = document.querySelector('.fa-shopping-cart');
-      if (cartIcon) {
-        cartIcon.addEventListener('click', () => {
-          window.location.href = 'Cart-View.html';
-        });
-        cartIcon.style.cursor = 'pointer';
-      }
-    });
-  </script>
+    window.addEventListener('DOMContentLoaded', updateCartIcon);
+   </script>
 
 </body>
 </html>

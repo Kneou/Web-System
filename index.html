@@ -23,23 +23,28 @@
       </ul>
     </nav>
     <div id="icons">
-      <i class="fas fa-search"></i>
+    <a href="login.html">
       <i class="fas fa-user"></i>
+    </a>
+    <a href="Cart-View.html">
       <i class="fas fa-shopping-cart"></i>
+    </a>   
     </div>
   </header>
 
   <!-- Hero Section -->
+  
   <section class="hero">
     <h1>Delicious Food, Anytime!</h1>
     <p>Order your favorite meals and get them delivered fast.</p>
     <div class="buttons">
-      <button class="btn btn-primary">Order Now</button>
-      <button class="btn btn-secondary">Learn More</button>
-    </div>
+    <button class="btn btn-primary" onclick="window.location.href='Trays.html'">Order Now</button>
+    <button class="btn btn-secondary" onclick="window.location.href='About.html'">Learn More</button>
+  </div>
   </section>
 
   <!-- Family Tray Section -->
+  <div class="page-container">
   <section id="family-tray">
     <h2>FAMILY TRAY</h2>
     <div class="cards">
@@ -76,7 +81,15 @@
         </div>
       </a>
 
-      <a href="Dessert-Category.html" style="text-decoration: none; color: inherit;">
+      <a href="Seafood-Category.html" style="text-decoration: none; color: inherit;">
+        <div class="card">
+          <img src="img\Seafood\Halabos na Hipon with Butter.png" alt="Seafood">
+          <div class="food-description">Halabos na Hipon with Butter is a simple yet irresistible Filipino favorite.</div>
+          <p>Seafood</p>
+        </div>
+      </a>
+
+     <a href="Dessert-Category.html" style="text-decoration: none; color: inherit;">
         <div class="card">
           <img src="img/Dessert/buko pandan.jpg" alt="Buko Pandan">
           <div class="food-description">Refreshing coconut and pandan flavored dessert</div>
@@ -84,6 +97,7 @@
         </div>
       </a>
 
+    </div>  
     </div>
   </section>
 
