@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tray Tayo</title>
+  <title>Tray Tayo - Beef Category</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -31,33 +31,50 @@
 
   <!-- Beef Category Section -->
   <section id="family-tray">
+    <a href="index.html" class="back-button">
+      <i class="fas fa-arrow-left"></i> Back to Home
+    </a>
     <h1>BEEF</h1>
     <div class="cards">
-      <div class="card">
-        <img src="img/Beef/Kare-Kare-Beef-and-Goto.jpg" alt="Beef Kare-Kare">
-        <div class="food-description">Tender beef in rich peanut sauce with fresh vegetables</div>
-        <p>Beef Kare-Kare</p>
-      </div>
-      <div class="card">
-        <img src="img/Beef/Beef Calderata.jpeg" alt="Beef Caldereta">
-        <div class="food-description">Classic Filipino chicken adobo with soy sauce and vinegar</div>
-        <p>Beef Caldereta</p>
-      </div>
-      <div class="card">
-        <img src="img/Beef/Beef Pares.jpeg" alt="Beef Pares">
-        <div class="food-description">Succulent pork ribs with special house sauce</div>
-        <p>Beef Pares</p>
-      </div>
-      <div class="card">
-        <img src="img/Beef/Beef Salpicao.jpeg" alt="Beef Salpicao">
-        <div class="food-description">Fresh mixed vegetables with shrimp and pork</div>
-        <p>Beef Salpicao</p>
-      </div>
-      <div class="card">
-        <img src="img/Beef/Bistek Tagalog.jpeg" alt="Bistek Tagalog">
-        <div class="food-description">Refreshing coconut and pandan flavored dessert</div>
-        <p>Bistek Tagalog</p>
-      </div>
+      <a href="Product-View.html?product=beef-kare-kare" style="text-decoration: none; color: inherit;">
+        <div class="card">
+          <img src="img/Beef/Kare-Kare-Beef-and-Goto.jpg" alt="Beef Kare-Kare">
+          <div class="food-description">Tender beef in rich peanut sauce with fresh vegetables. A classic Filipino stew known for its creamy and savory flavor.</div>
+          <p>Beef Kare-Kare</p>
+        </div>
+      </a>
+      
+      <a href="Product-View.html?product=beef-caldereta" style="text-decoration: none; color: inherit;">
+        <div class="card">
+          <img src="img/Beef/Beef Calderata.jpeg" alt="Beef Caldereta">
+          <div class="food-description">Classic Filipino beef stew cooked in tomato sauce with bell peppers and olives. Rich, hearty, and flavorful.</div>
+          <p>Beef Caldereta</p>
+        </div>
+      </a>
+      
+      <a href="Product-View.html?product=beef-pares" style="text-decoration: none; color: inherit;">
+        <div class="card">
+          <img src="img/Beef/Beef Pares.jpeg" alt="Beef Pares">
+          <div class="food-description">Tender beef braised in a sweet and savory sauce, served with garlic fried rice. A popular Filipino comfort food.</div>
+          <p>Beef Pares</p>
+        </div>
+      </a>
+      
+      <a href="Product-View.html?product=beef-salpicao" style="text-decoration: none; color: inherit;">
+        <div class="card">
+          <img src="img/Beef/Beef Salpicao.jpeg" alt="Beef Salpicao">
+          <div class="food-description">Tender beef cubes stir-fried with garlic, soy sauce, and Worcestershire sauce. Perfect with garlic rice.</div>
+          <p>Beef Salpicao</p>
+        </div>
+      </a>
+      
+      <a href="Product-View.html?product=bistek-tagalog" style="text-decoration: none; color: inherit;">
+        <div class="card">
+          <img src="img/Beef/Bistek Tagalog.jpeg" alt="Bistek Tagalog">
+          <div class="food-description">Tender beef slices marinated in soy sauce and calamansi, cooked with onions. A classic Filipino dish with tangy flavors.</div>
+          <p>Bistek Tagalog</p>
+        </div>
+      </a>
     </div>
   </section>
 
@@ -73,6 +90,67 @@
 
   <!-- Font Awesome Icons -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/js/all.min.js"></script>
+
+  <script>
+    // Cart management functions
+    function getCart() {
+      const cart = localStorage.getItem('cart');
+      return cart ? JSON.parse(cart) : [];
+    }
+
+    function updateCartIcon() {
+      const cart = getCart();
+      const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+      
+      // Update cart icon in navbar
+      const cartIcon = document.querySelector('.fa-shopping-cart');
+      if (cartIcon) {
+        // Remove existing badge if any
+        const existingBadge = cartIcon.parentElement.querySelector('.cart-badge');
+        if (existingBadge) {
+          existingBadge.remove();
+        }
+        
+        // Add badge if there are items
+        if (totalItems > 0) {
+          const badge = document.createElement('span');
+          badge.className = 'cart-badge';
+          badge.textContent = totalItems;
+          badge.style.cssText = `
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: #ff4444;
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+          `;
+          cartIcon.parentElement.style.position = 'relative';
+          cartIcon.parentElement.appendChild(badge);
+        }
+      }
+    }
+
+    // Initialize cart icon on page load
+    window.addEventListener('DOMContentLoaded', () => {
+      updateCartIcon();
+      
+      // Add cart icon click functionality
+      const cartIcon = document.querySelector('.fa-shopping-cart');
+      if (cartIcon) {
+        cartIcon.addEventListener('click', () => {
+          window.location.href = 'Cart-View.html';
+        });
+        cartIcon.style.cursor = 'pointer';
+      }
+    });
+  </script>
 
 </body>
 </html>
