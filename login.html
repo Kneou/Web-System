@@ -4,10 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login - TrayTayo</title>
+
   <!-- Bootstrap CDN -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
   <!-- Font Awesome CDN -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
   <style>
     body {
       background-color: #fff8f0;
@@ -38,6 +41,7 @@
     }
   </style>
 </head>
+
 <body>
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg">
@@ -55,10 +59,12 @@
     </div>
   </nav>
 
-  <!-- Login Form -->
+  <!-- Login Container -->
   <div class="login-container text-center">
     <h4 class="fw-bold mb-3" style="color:#4b2c1a;">Welcome to TrayTayo</h4>
     <p class="text-muted">Sign in to your account or create a new one</p>
+
+    <!-- Tabs -->
     <ul class="nav nav-tabs mb-3 justify-content-center">
       <li class="nav-item">
         <a class="nav-link active" data-bs-toggle="tab" href="#login">Login</a>
@@ -68,6 +74,7 @@
       </li>
     </ul>
 
+    <!-- Tab Content -->
     <div class="tab-content">
       <!-- Login Tab -->
       <div class="tab-pane fade show active" id="login">
@@ -79,7 +86,8 @@
           <div class="mb-3 text-start">
             <label>Password</label>
             <input type="password" class="form-control" placeholder="••••••••" required>
-            <a href="#" class="text-decoration-none small float-end mt-1">Forgot password?</a>
+            <!-- 🔹 Added forgot password link -->
+            <a href="#" class="text-decoration-none small float-end mt-1 forgot-password">Forgot password?</a>
           </div>
           <div class="form-check mb-3 text-start">
             <input class="form-check-input" type="checkbox" id="remember">
@@ -117,10 +125,14 @@
   <script type="module">
     // Import Firebase modules
     import { initializeApp } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-app.js";
-    import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } 
-      from "https://www.gstatic.com/firebasejs/12.4.0/firebase-auth.js";
+    import { 
+      getAuth, 
+      createUserWithEmailAndPassword, 
+      signInWithEmailAndPassword, 
+      sendPasswordResetEmail 
+    } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-auth.js";
 
-    // ✅ Updated Firebase config (new regenerated key)
+    // ✅ Your Firebase Config
     const firebaseConfig = {
       apiKey: "AIzaSyC1HmoLg9E5pjOTNpWH5owttBM6Dq7Gb8Y",
       authDomain: "traytayog11.firebaseapp.com",
@@ -135,7 +147,7 @@
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
 
-    // Handle Login
+    // 🔐 LOGIN
     const loginForm = document.querySelector("#login form");
     loginForm.addEventListener("submit", (e) => {
       e.preventDefault();
@@ -146,14 +158,14 @@
         .then((userCredential) => {
           alert("Login successful!");
           console.log("User:", userCredential.user);
-          window.location.href = "index.html"; // redirect after login
+          window.location.href = "index.html";
         })
         .catch((error) => {
           alert("Login failed: " + error.message);
         });
     });
 
-    // Handle Sign Up
+    // 🧾 SIGN UP
     const signupForm = document.querySelector("#signup form");
     signupForm.addEventListener("submit", (e) => {
       e.preventDefault();
@@ -169,6 +181,25 @@
         .catch((error) => {
           alert("Sign up failed: " + error.message);
         });
+    });
+
+    // ✉️ FORGOT PASSWORD
+    const forgotPasswordLink = document.querySelector(".forgot-password");
+    forgotPasswordLink.addEventListener("click", (e) => {
+      e.preventDefault();
+      const email = prompt("Enter your registered email address:");
+
+      if (email) {
+        sendPasswordResetEmail(auth, email)
+          .then(() => {
+            alert("✅ Password reset email sent! Check your inbox.");
+          })
+          .catch((error) => {
+            alert("❌ Error: " + error.message);
+          });
+      } else {
+        alert("Please enter a valid email to reset your password.");
+      }
     });
   </script>
 </body>
