@@ -111,14 +111,12 @@
     <div class="icons">
       <i class="fas fa-search"></i>
       <i class="fas fa-user"></i>
-      <i class="fas fa-shopping-cart"></i>
+      <i class="fas fa-shopping-cart" onclick="window.location.href='Cart-View.html'" style="cursor:pointer;"></i>
     </div>
   </header>
 
   <!-- Back Button -->
-  <a href="#" id="back-button" class="back-button">
-    <i class="fas fa-arrow-left"></i> Back to Category
-  </a>
+  <button id="back-button" class="back-button cute-btn"><i class="fas fa-arrow-left"></i> <b>Back</b></button>
 
   <!-- Product Section -->
   <div id="product-container">
@@ -667,23 +665,23 @@
       const backButton = document.getElementById('back-button');
       
       if (productId.startsWith('beef-')) {
-        backButton.href = 'Beef-Category.html';
+        backButton.onclick = function() { window.location.href = 'Beef-Category.html'; };
         backButton.innerHTML = '<i class="fas fa-arrow-left"></i> Back to Beef Category';
       } else if (productId.startsWith('chicken-') || productId === 'fried-chicken') {
-        backButton.href = 'Chicken-Category.html';
+        backButton.onclick = function() { window.location.href = 'Chicken-Category.html'; };
         backButton.innerHTML = '<i class="fas fa-arrow-left"></i> Back to Chicken Category';
       } else if (productId.startsWith('pork-') || productId === 'braised-pork' || productId === 'crispy-pork-leg' || productId === 'lechon-kawali-kare-kare' || productId === 'sinigang-na-baboy') {
-        backButton.href = 'Pork-Category.html';
+        backButton.onclick = function() { window.location.href = 'Pork-Category.html'; };
         backButton.innerHTML = '<i class="fas fa-arrow-left"></i> Back to Pork Category';
       } else if (productId.startsWith('vegetable-') || productId.startsWith('veg-') || productId === 'ginisang-monggo-kalabasa' || productId === 'ginisang-ampalaya' || productId === 'garlic-tokwa-kangkong' || productId === 'tortang-talong' || productId === 'lumpiang-hubad' || productId === 'chopseuy' || productId === 'tofu-sisig') {
-        backButton.href = 'Vegetables-Category.html';
+        backButton.onclick = function() { window.location.href = 'Vegetables-Category.html'; };
         backButton.innerHTML = '<i class="fas fa-arrow-left"></i> Back to Vegetables Category';
       } else if (productId.startsWith('dessert-') || productId.startsWith('dessert') || productId === 'buko-pandan' || productId === 'cathedral-window-gelatin' || productId === 'leche-flan' || productId === 'maja-blanca' || productId === 'macaroni-fruit-salad') {
-        backButton.href = 'Dessert-Category.html';
+        backButton.onclick = function() { window.location.href = 'Dessert-Category.html'; };
         backButton.innerHTML = '<i class="fas fa-arrow-left"></i> Back to Dessert Category';
       } else {
         // Default fallback
-        backButton.href = 'index.html';
+        backButton.onclick = function() { window.location.href = 'index.html'; };
         backButton.innerHTML = '<i class="fas fa-arrow-left"></i> Back to Home';
       }
     }
