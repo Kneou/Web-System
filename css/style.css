@@ -99,6 +99,87 @@ body {
   background-color: #f0f0f0;
 }
 
+/* Cute Button Styles */
+.cute-btn {
+  background: #ffe0b2;
+  color: #3e2723;
+  border: none;
+  border-radius: 12px;
+  font-weight: bold;
+  font-size: 16px;
+  padding: 10px 24px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.cute-btn:hover {
+  background: #ffd180;
+  color: #bf360c;
+}
+
+/* Cart Badge */
+.cart-badge {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: #ff4444;
+  color: white;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  z-index: 10;
+}
+
+/* Cart Item Remove Button */
+.remove-btn {
+  background: #ff4444;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 3px;
+  cursor: pointer;
+  margin-left: 10px;
+  font-size: 12px;
+  transition: background-color 0.3s ease;
+}
+
+.remove-btn:hover {
+  background: #cc0000;
+}
+
+/* Cart Item Serving Size */
+.serving-size {
+  font-size: 12px;
+  color: #666;
+  margin-top: 2px;
+}
+
+/* Continue Shopping Button */
+.btn-primary {
+  background-color: #f9d6aa;
+  color: #2b2b2b;
+  padding: 10px 20px;
+  border: 1px solid #d1a871;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.btn-primary:hover {
+  background-color: #d1a871;
+  color: #fff;
+}
+
 
 /* ========== HOMEPAGE STYLES ========== */
 .hero {

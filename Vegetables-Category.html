@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tray Tayo</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header id="navbar">
+    <div class="logo">
+      <img src="img/logo.png" alt="TrayTayo Logo">
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html">HOME</a></li>
+        <li><a href="#">TRAYS</a></li>
+        <li><a href="#">BEST SELLER</a></li>
+        <li><a href="Chef.html">CHEFS</a></li>
+        <li><a href="About.html">ABOUT</a></li>
+    </nav>
+    <div id="icons">
+      <i class="fas fa-search"></i>
+      <i class="fas fa-user"></i>
+      <i class="fas fa-shopping-cart"></i>
+    </div>
+  </header>
+
+  <!-- Vegetables Category Section -->
+  <section id="family-tray">
+    <button onclick="window.location.href='index.html'" class="back-button"><i class="fas fa-arrow-left"></i> Back to Home</button>
+    </a>
+    <h1>VEGETABLES</h1>
+    <div class="cards">
+      <a href="Product-View.html?product=ginisang-monggo-kalabasa" style="text-decoration: none; color: inherit;">
+        <div class="card">
+          <img src="img/Vegetables/Ginisang Monggo with Kalabasa.png" alt="Ginisang Monggo with Kalabasa">
+          <div class="food-description">A nutritious mung bean stew with squash, commonly enjoyed in Filipino households. Rich in protein and vitamins, perfect for healthy eating.</div>
+          <p>Ginisang Monggo with Kalabasa</p>
+        </div>
+      </a>
+      
+      <a href="Product-View.html?product=ginisang-ampalaya" style="text-decoration: none; color: inherit;">
+        <div class="card">
+          <img src="img/Vegetables/ginisang amplaya.png" alt="Ginisang Ampalaya ">
+          <div class="food-description">Classic Filipino dish featuring sautéed bitter melon with eggs, garlic, onions, and tomatoes. A healthy and flavorful vegetable dish.</div>
+          <p>Ginisang Ampalaya </p>
+        </div>
+      </a>
+      
+      <a href="Product-View.html?product=garlic-tokwa-kangkong" style="text-decoration: none; color: inherit;">
+        <div class="card">
+          <img src="img/Vegetables/Garlic Tokwa and Kangkong in Oyster Sauce.png" alt="Garlic Tokwa and Kangkong in Oyster Sauce">
+          <div class="food-description">Flavorful stir-fry with tofu and water spinach in savory oyster sauce. A perfect combination of textures and flavors.</div>
+          <p>Garlic Tokwa and Kangkong in Oyster Sauce </p>
+        </div>
+      </a>
+      
+      <a href="Product-View.html?product=tortang-talong" style="text-decoration: none; color: inherit;">
+        <div class="card">
+          <img src="img/Vegetables/Tortang Talong.png" alt="Tortang Talong">
+          <div class="food-description">Filipino eggplant omelet made with grilled eggplant and eggs. A simple yet delicious vegetarian dish perfect for any meal.</div>
+          <p>Tortang Talong</p>
+        </div>
+      </a>
+      
+      <a href="Product-View.html?product=lumpiang-hubad" style="text-decoration: none; color: inherit;">
+        <div class="card">
+          <img src="img/Vegetables/Lumpiang Hubad.png" alt="Lumpiang Hubad">
+          <div class="food-description">Fresh sautéed vegetables served without wrapper, featuring crisp vegetables in a savory sauce. Healthy and refreshing.</div>
+          <p>Lumpiang Hubad</p>
+        </div>
+      </a>
+      
+      <a href="Product-View.html?product=chopseuy" style="text-decoration: none; color: inherit;">
+        <div class="card">
+          <img src="img/Vegetables/chopseuy.jpg" alt="Chopseuy">
+          <div class="food-description">Colorful mixed vegetable stir-fry with a variety of fresh vegetables in a light, savory sauce. Perfect for healthy dining.</div>
+          <p>Chopseuy</p>
+        </div>
+      </a>
+      
+      <a href="Product-View.html?product=tofu-sisig" style="text-decoration: none; color: inherit;">
+        <div class="card">
+          <img src="img/Vegetables/tofu sisig.jpg" alt="Tofu Sisig">
+          <div class="food-description">Vegetarian version of the popular sisig dish made with crispy tofu, onions, and chili peppers. Spicy and flavorful.</div>
+          <p>Tofu Sisig</p>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="subscribe">SUBSCRIBE TO OUR EMAILS</div>
+    <div class="socials">
+      <i class="fas fa-globe"></i>
+      <i class="fab fa-instagram"></i>
+      <i class="fab fa-twitter"></i>
+    </div>
+  </footer>
+
+  <!-- Font Awesome Icons -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/js/all.min.js"></script>
+
+  <script>
+    // Cart management functions
+    function getCart() {
+      const cart = localStorage.getItem('cart');
+      return cart ? JSON.parse(cart) : [];
+    }
+
+    function updateCartIcon() {
+      const cart = getCart();
+      const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+      
+      // Update cart icon in navbar
+      const cartIcon = document.querySelector('.fa-shopping-cart');
+      if (cartIcon) {
+        // Remove existing badge if any
+        const existingBadge = cartIcon.parentElement.querySelector('.cart-badge');
+        if (existingBadge) {
+          existingBadge.remove();
+        }
+        
+        // Add badge if there are items
+        if (totalItems > 0) {
+          const badge = document.createElement('span');
+          badge.className = 'cart-badge';
+          badge.textContent = totalItems;
+          badge.style.cssText = `
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: #ff4444;
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+          `;
+          cartIcon.parentElement.style.position = 'relative';
+          cartIcon.parentElement.appendChild(badge);
+        }
+      }
+    }
+
+    // Initialize cart icon on page load
+    window.addEventListener('DOMContentLoaded', () => {
+      updateCartIcon();
+      
+      // Add cart icon click functionality
+      const cartIcon = document.querySelector('.fa-shopping-cart');
+      if (cartIcon) {
+        cartIcon.addEventListener('click', () => {
+          window.location.href = 'Cart-View.html';
+        });
+        cartIcon.style.cursor = 'pointer';
+      }
+    });
+  </script>
+
+</body>
+</html>

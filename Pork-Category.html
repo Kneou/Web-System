@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tray Tayo</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header id="navbar">
+    <div class="logo">
+      <img src="img/logo.png" alt="TrayTayo Logo">
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html">HOME</a></li>
+        <li><a href="#">TRAYS</a></li>
+        <li><a href="#">BEST SELLER</a></li>
+        <li><a href="Chef.html">CHEFS</a></li>
+        <li><a href="About.html">ABOUT</a></li>
+      </ul>
+    </nav>
+    <div id="icons">
+      <i class="fas fa-search"></i>
+      <i class="fas fa-user"></i>
+      <i class="fas fa-shopping-cart"></i>
+    </div>
+  </header>
+
+  <!-- Pork Category Section -->
+  <section id="family-tray">
+    <button onclick="window.location.href='index.html'" class="back-button"><i class="fas fa-arrow-left"></i> Back to Home</button>
+    </a>
+    <h1>PORK</h1>
+    <div class="cards">
+      <a href="Product-View.html?product=braised-pork" style="text-decoration: none; color: inherit;">
+        <div class="card">
+          <img src="img/Pork/Braised Pork.jpg" alt="Braised Pork">
+          <div class="food-description">Tender pork belly slow-cooked in a rich, savory sauce until fall-apart tender. A comforting Filipino dish perfect for family gatherings.</div>
+          <p>Braised Pork</p>
+        </div>
+      </a>
+      
+      <a href="Product-View.html?product=crispy-pork-leg" style="text-decoration: none; color: inherit;">
+        <div class="card">
+          <img src="img/Pork/Crispy Pork Leg.jpg" alt="Crispy Pork Leg">
+          <div class="food-description">Golden crispy pork leg with crackling skin and tender meat inside. A festive Filipino dish perfect for special occasions.</div>
+          <p>Crispy Pork Leg</p>
+        </div>
+      </a>
+      
+      <a href="Product-View.html?product=lechon-kawali-kare-kare" style="text-decoration: none; color: inherit;">
+        <div class="card">
+          <img src="img/Pork/Lechon Kawali Kare-Kare.jpg" alt="Lechon Kawali Kare-Kare">
+          <div class="food-description">Crispy lechon kawali served with rich peanut sauce and fresh vegetables. A fusion of two beloved Filipino dishes.</div>
+          <p>Lechon Kawali Kare-Kare</p>
+        </div>
+      </a>
+      
+      <a href="Product-View.html?product=pork-barbecue" style="text-decoration: none; color: inherit;">
+        <div class="card">
+          <img src="img/Pork/Pork barbecue.webp" alt="Pork Barbecue">
+          <div class="food-description">Grilled pork skewers marinated in sweet and savory sauce. Perfect for outdoor gatherings and casual dining.</div>
+          <p>Pork Barbecue</p>
+        </div>
+      </a>
+      
+      <a href="Product-View.html?product=pork-menudo" style="text-decoration: none; color: inherit;">
+        <div class="card">
+          <img src="img/Pork/Pork Menudo.jpeg" alt="Pork Menudo">
+          <div class="food-description">Classic Filipino pork stew with potatoes, carrots, and bell peppers in tomato sauce. A hearty and colorful dish.</div>
+          <p>Pork Menudo</p>
+        </div>
+      </a>
+      
+      <a href="Product-View.html?product=pork-ribs" style="text-decoration: none; color: inherit;">
+        <div class="card">
+          <img src="img/Pork/pork ribs.jpg" alt="Pork Ribs">
+          <div class="food-description">Succulent pork ribs slow-cooked until tender and glazed with our special house sauce. Fall-off-the-bone delicious.</div>
+          <p>Pork Ribs</p>
+        </div>
+      </a>
+      
+      <a href="Product-View.html?product=sinigang-na-baboy" style="text-decoration: none; color: inherit;">
+        <div class="card">
+          <img src="img/Pork/sinigang na baboy.jpg" alt="Sinigang na Baboy">
+          <div class="food-description">Classic Filipino sour soup with tender pork, vegetables, and tamarind broth. Comforting and refreshing.</div>
+          <p>Sinigang na Baboy</p>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="subscribe">SUBSCRIBE TO OUR EMAILS</div>
+    <div class="socials">
+      <i class="fas fa-globe"></i>
+      <i class="fab fa-instagram"></i>
+      <i class="fab fa-twitter"></i>
+    </div>
+  </footer>
+
+  <!-- Font Awesome Icons -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/js/all.min.js"></script>
+
+  <script>
+    // Cart management functions
+    function getCart() {
+      const cart = localStorage.getItem('cart');
+      return cart ? JSON.parse(cart) : [];
+    }
+
+    function updateCartIcon() {
+      const cart = getCart();
+      const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+      
+      // Update cart icon in navbar
+      const cartIcon = document.querySelector('.fa-shopping-cart');
+      if (cartIcon) {
+        // Remove existing badge if any
+        const existingBadge = cartIcon.parentElement.querySelector('.cart-badge');
+        if (existingBadge) {
+          existingBadge.remove();
+        }
+        
+        // Add badge if there are items
+        if (totalItems > 0) {
+          const badge = document.createElement('span');
+          badge.className = 'cart-badge';
+          badge.textContent = totalItems;
+          badge.style.cssText = `
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: #ff4444;
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+          `;
+          cartIcon.parentElement.style.position = 'relative';
+          cartIcon.parentElement.appendChild(badge);
+        }
+      }
+    }
+
+    // Initialize cart icon on page load
+    window.addEventListener('DOMContentLoaded', () => {
+      updateCartIcon();
+      
+      // Add cart icon click functionality
+      const cartIcon = document.querySelector('.fa-shopping-cart');
+      if (cartIcon) {
+        cartIcon.addEventListener('click', () => {
+          window.location.href = 'Cart-View.html';
+        });
+        cartIcon.style.cursor = 'pointer';
+      }
+    });
+  </script>
+
+</body>
+</html>

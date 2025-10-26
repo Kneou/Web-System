@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tray Tayo</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header id="navbar">
+    <div class="logo">
+      <img src="img/logo.png" alt="TrayTayo Logo">
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html">HOME</a></li>
+        <li><a href="#">TRAYS</a></li>
+        <li><a href="#">BEST SELLER</a></li>
+        <li><a href="Chef.html">CHEFS</a></li>
+        <li><a href="About.html">ABOUT</a></li>
+      </ul>
+    </nav>
+    <div id="icons">
+      <i class="fas fa-search"></i>
+      <i class="fas fa-user"></i>
+      <i class="fas fa-shopping-cart"></i>
+    </div>
+  </header>
+
+  <!-- Dessert Category Section -->
+  <section id="family-tray">
+    <button onclick="window.location.href='index.html'" class="back-button"><i class="fas fa-arrow-left"></i> Back to Home</button>
+    </a>
+    <h1>DESSERT</h1>
+    <div class="cards">
+      <a href="Product-View.html?product=buko-pandan" style="text-decoration: none; color: inherit;">
+        <div class="card">
+          <img src="img/Dessert/Buko Pandan.png" alt="Buko Pandan">
+          <div class="food-description">A refreshing Filipino dessert made with tender young coconut strips and chewy pandan-flavored jelly mixed in creamy sweetened milk. Perfect for hot weather.</div>
+          <p>Buko Pandan</p>
+        </div>
+      </a>
+      
+      <a href="Product-View.html?product=cathedral-window-gelatin" style="text-decoration: none; color: inherit;">
+        <div class="card">
+          <img src="img/Dessert/Cathedral Window Gelatin.png" alt="Cathedral Window Gelatin">
+          <div class="food-description">A festive dessert that captivates both the eyes and taste buds. Colorful gelatin cubes in creamy milk create a beautiful stained glass effect.</div>
+          <p>Cathedral Window Gelatin</p>
+        </div>
+      </a>
+      
+      <a href="Product-View.html?product=leche-flan" style="text-decoration: none; color: inherit;">
+        <div class="card">
+          <img src="img/Dessert/Leche Flan.png" alt="Leche Flan ">
+          <div class="food-description">A timeless Filipino custard dessert known for its silky texture and rich caramel flavor. A classic treat perfect for any celebration.</div>
+          <p>Leche Flan </p>
+        </div>
+      </a>
+      
+      <a href="Product-View.html?product=maja-blanca" style="text-decoration: none; color: inherit;">
+        <div class="card">
+          <img src="img/Dessert/Maja Blanca.png" alt="Maja Blanca">
+          <div class="food-description">A creamy coconut pudding made from coconut milk, cornstarch, and sugar, topped with toasted latik or corn kernels. Smooth and delightful.</div>
+          <p>Maja Blanca</p>
+        </div>
+      </a>
+      
+      <a href="Product-View.html?product=macaroni-fruit-salad" style="text-decoration: none; color: inherit;">
+        <div class="card">
+          <img src="img/Dessert/Macaroni Salad.png" alt="Macaroni Fruit Salad">
+          <div class="food-description">A uniquely Filipino twist on the classic fruit salad, made with cooked macaroni, mixed fruits, and a rich, creamy dressing of sweetened cream and condensed milk.</div>
+          <p>Macaroni Fruit Salad</p>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="subscribe">SUBSCRIBE TO OUR EMAILS</div>
+    <div class="socials">
+      <i class="fas fa-globe"></i>
+      <i class="fab fa-instagram"></i>
+      <i class="fab fa-twitter"></i>
+    </div>
+  </footer>
+
+  <!-- Font Awesome Icons -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/js/all.min.js"></script>
+
+  <script>
+    // Cart management functions
+    function getCart() {
+      const cart = localStorage.getItem('cart');
+      return cart ? JSON.parse(cart) : [];
+    }
+
+    function updateCartIcon() {
+      const cart = getCart();
+      const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+      
+      // Update cart icon in navbar
+      const cartIcon = document.querySelector('.fa-shopping-cart');
+      if (cartIcon) {
+        // Remove existing badge if any
+        const existingBadge = cartIcon.parentElement.querySelector('.cart-badge');
+        if (existingBadge) {
+          existingBadge.remove();
+        }
+        
+        // Add badge if there are items
+        if (totalItems > 0) {
+          const badge = document.createElement('span');
+          badge.className = 'cart-badge';
+          badge.textContent = totalItems;
+          badge.style.cssText = `
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: #ff4444;
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+          `;
+          cartIcon.parentElement.style.position = 'relative';
+          cartIcon.parentElement.appendChild(badge);
+        }
+      }
+    }
+
+    // Initialize cart icon on page load
+    window.addEventListener('DOMContentLoaded', () => {
+      updateCartIcon();
+      
+      // Add cart icon click functionality
+      const cartIcon = document.querySelector('.fa-shopping-cart');
+      if (cartIcon) {
+        cartIcon.addEventListener('click', () => {
+          window.location.href = 'Cart-View.html';
+        });
+        cartIcon.style.cursor = 'pointer';
+      }
+    });
+  </script>
+
+</body>
+</html>

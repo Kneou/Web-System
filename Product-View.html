@@ -5,6 +5,92 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tray Tayo - Product Page</title>
   <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* Carousel Styles */
+    .product-image-container {
+      position: relative;
+      width: 100%;
+      max-width: 600px;
+    }
+    
+    .image-carousel {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      border-radius: 10px;
+    }
+    
+    .carousel-wrapper {
+      display: flex;
+      transition: transform 0.3s ease-in-out;
+      width: 100%;
+    }
+    
+    .carousel-slide {
+      min-width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .carousel-slide img {
+      width: 100%;
+      height: 500px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+    
+    .carousel-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0, 0, 0, 0.5);
+      color: white;
+      border: none;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.3s;
+      z-index: 10;
+    }
+    
+    .carousel-arrow:hover {
+      background: rgba(0, 0, 0, 0.7);
+    }
+    
+    .carousel-arrow.left {
+      left: 15px;
+    }
+    
+    .carousel-arrow.right {
+      right: 15px;
+    }
+    
+    .carousel-dots {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 15px;
+    }
+    
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #ccc;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    
+    .dot.active {
+      background: #f9d6aa;
+    }
+  </style>
 </head>
 <body>
 
@@ -15,76 +101,90 @@
     </div>
     <nav>
       <ul>
-        <li><a href="#">HOME</a></li>
+        <li><a href="index.html">HOME</a></li>
         <li><a href="#">TRAYS</a></li>
         <li><a href="#">BEST SELLER</a></li>
-        <li><a href="#">CHEFS</a></li>
-        <li><a href="#">ABOUT</a></li>
+        <li><a href="Chef.html">CHEFS</a></li>
+        <li><a href="About.html">ABOUT</a></li>
       </ul>
     </nav>
     <div class="icons">
       <i class="fas fa-search"></i>
       <i class="fas fa-user"></i>
-      <i class="fas fa-shopping-cart"></i>
+      <i class="fas fa-shopping-cart" onclick="window.location.href='Cart-View.html'" style="cursor:pointer;"></i>
     </div>
   </header>
+
+  <!-- Back Button -->
+  <button id="back-button" class="back-button cute-btn"><i class="fas fa-arrow-left"></i> <b>Back</b></button>
 
   <!-- Product Section -->
   <div id="product-container">
     <div class="product-info">
-      <h1>Chicken Inasal</h1>
-      <div class="stars">★★★★★ (4.9 stars) • 234 reviews</div>
-      <div class="price">₱850</div>
-      <p>
-        A vibrant platter of golden-brown grilled chicken pieces, perfect for family gatherings. 
-        This classic Filipino dish is known for its distinct smoky and tangy flavor.
+      <h1 id="product-name">Loading...</h1>
+      <div class="stars" id="product-rating">★★★★★ (4.9 stars) • 234 reviews</div>
+      <div class="price" id="product-price">₱850</div>
+      <p id="product-short-description">
+        Loading product information...
       </p>
 
       <label for="serving-size">Serving Size</label><br>
-      <select id="serving-size">
-        <option>3-6 pax</option>
-        <option>10-15 pax</option>
-        <option>20-25 pax</option>
+      <select id="serving-size" onchange="updatePrice()">
+        <option value="small">3-6 pax</option>
+        <option value="medium" selected>10-15 pax</option>
+        <option value="large">20-25 pax</option>
       </select><br>
 
       <label for="quantity">Quantity</label>
       <div class="quantity">
-        <button>-</button>
-        <input type="text" value="1">
-        <button>+</button>
+        <button onclick="decreaseQuantity()">-</button>
+        <input type="text" id="quantity-input" value="1" readonly>
+        <button onclick="increaseQuantity()">+</button>
       </div>
 
-      <button class="add-cart">🛒 Add to Cart</button>
+      <button class="add-cart" onclick="addToCart()">🛒 Add to Cart</button>
     </div>
 
-    <div class="product-image">
-      <img src="img/chicken inasal.jpg" alt="Chicken Inasal">
+    <div class="product-image" id="product-image-container">
+      <!-- Image carousel will be inserted here -->
     </div>
   </div>
 
   <!-- Tabs -->
   <div class="tabs">
-    <div class="active">Description</div>
-    <div>Reviews</div>
-    <div>Shipping & Returns</div>
+    <div class="tab active" onclick="switchTab(0)">Description</div>
+    <div class="tab" onclick="switchTab(1)">Reviews</div>
+    <div class="tab" onclick="switchTab(2)">Shipping & Returns</div>
   </div>
 
   <!-- Tab Content -->
-  <div class="tab-content">
+  <div class="tab-content" id="description-tab">
     <h3>PRODUCT DESCRIPTION</h3>
-    <p>
-      Chicken Inasal is a famous Filipino grilled chicken dish marinated in a blend of vinegar, calamansi (Philippine lime), lemongrass, garlic, ginger, and spices. It is traditionally cooked over charcoal and basted with a flavorful annatto oil that gives it its distinct smoky aroma, savory taste, and vibrant golden color. Perfectly juicy and tender, it’s a well-loved comfort food that pairs best with garlic rice and atchara (pickled papaya).
+    <p id="product-description">
+      Loading...
     </p>
 
     <h3>HOW TO USE</h3>
-    <p>
-      Best enjoyed freshly grilled and served hot. Simply heat on a grill, pan, or oven until warm, then serve with rice and dipping sauces such as soy sauce, calamansi, or vinegar with chili. It can also be shredded and used as a flavorful topping for rice bowls, wraps, or salads.
+    <p id="product-usage">
+      Loading...
     </p>
 
     <h3>INGREDIENTS</h3>
-    <p>
-      Chicken, vinegar, calamansi, lemongrass, garlic, ginger, annatto oil, salt, sugar, soy sauce, ground pepper.
+    <p id="product-ingredients">
+      Loading...
     </p>
+  </div>
+
+  <div class="tab-content" id="reviews-tab" style="display: none;">
+    <h3>CUSTOMER REVIEWS</h3>
+    <p>No reviews yet. Be the first to review this product!</p>
+  </div>
+
+  <div class="tab-content" id="shipping-tab" style="display: none;">
+    <h3>SHIPPING INFORMATION</h3>
+    <p>Free shipping on orders over ₱1,000. Standard delivery takes 2-3 business days within Metro Manila.</p>
+    <h3>RETURNS</h3>
+    <p>We accept returns within 7 days of purchase. Items must be in original condition and packaging.</p>
   </div>
 
   <!-- Footer -->
@@ -100,6 +200,765 @@
   <!-- Font Awesome Icons -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/js/all.min.js"></script>
 
+  <script>
+    // Product database
+    const products = {
+      'beef-kare-kare': {
+        name: 'Beef Kare-Kare',
+        rating: '4.9 stars',
+        reviews: '234 reviews',
+        price: 950,
+        shortDescription: 'Tender beef in rich peanut sauce with fresh vegetables. A classic Filipino stew known for its creamy and savory flavor.',
+        images: [
+          'img/Beef/Kare-Kare-Beef-and-Goto.jpg',
+          'img/Beef/kare kare.jpg'
+        ],
+        description: 'Kare-Kare is a traditional Filipino stew made with tender beef cooked in a rich, savory peanut sauce. This classic dish is known for its creamy texture and distinctive flavor, featuring oxtail, tripe, or beef stewed in a peanut-based sauce with vegetables like eggplant, string beans, and banana blossoms. The dish is typically served with bagoong (fermented shrimp paste) to enhance its flavor profile.',
+        usage: 'Best served hot over steamed white rice. Add a spoonful of bagoong on the side for an authentic Filipino dining experience. For leftovers, reheat slowly in a pan or microwave until warm throughout.',
+        ingredients: 'Beef (oxtail/tripe/stew meat), peanut butter, annatto seeds, garlic, onions, eggplant, string beans, banana blossoms, salt, pepper, fish sauce, beef stock or water.'
+      },
+      'beef-caldereta': {
+        name: 'Beef Caldereta',
+        rating: '4.7 stars',
+        reviews: '189 reviews',
+        price: 900,
+        shortDescription: 'Classic Filipino beef stew cooked in tomato sauce with bell peppers and olives. Rich, hearty, and flavorful.',
+        images: [
+          'img/Beef/Beef Calderata.jpeg',
+          'img/Beef/beef caldereta.jpg'
+        ],
+        description: 'Caldereta is a rich and flavorful Filipino stew made with tender beef chunks simmered in tomato sauce with vegetables. This hearty dish features beef cooked with bell peppers, potatoes, carrots, and green olives in a savory tomato-based sauce. The combination of spices and vegetables creates a complex, satisfying flavor that pairs perfectly with rice.',
+        usage: 'Serve hot over steamed white rice. The dish reheats well and can be enjoyed for lunch or dinner. Garnish with fresh parsley for added flavor and presentation.',
+        ingredients: 'Beef chunks, tomato sauce, bell peppers (red and green), potatoes, carrots, green olives, garlic, onions, bay leaves, chili pepper, liver spread, soy sauce, salt, pepper, cooking oil, water or beef stock.'
+      },
+      'beef-pares': {
+        name: 'Beef Pares',
+        rating: '4.8 stars',
+        reviews: '156 reviews',
+        price: 850,
+        shortDescription: 'Tender beef braised in a sweet and savory sauce, served with garlic fried rice. A popular Filipino comfort food.',
+        images: [
+          'img/Beef/Beef Pares.jpeg'
+        ],
+        description: 'Beef Pares is a popular Filipino comfort food consisting of tender beef braised in a sweet and savory sauce until fall-apart tender. This beloved dish is typically served with garlic fried rice and a clear soup, making it a complete and satisfying meal. The beef is cooked low and slow until it becomes incredibly tender and flavorful.',
+        usage: 'Best enjoyed hot with garlic fried rice and a side of soup. The braising liquid makes excellent sauce for the rice. Store leftovers in the refrigerator and reheat when ready to serve.',
+        ingredients: 'Beef (chuck or brisket), soy sauce, brown sugar, garlic, onion, star anise, cinnamon stick, bay leaves, whole peppercorns, water, cooking oil, salt.'
+      },
+      'beef-salpicao': {
+        name: 'Beef Salpicao',
+        rating: '4.6 stars',
+        reviews: '142 reviews',
+        price: 880,
+        shortDescription: 'Tender beef cubes stir-fried with garlic, soy sauce, and Worcestershire sauce. Perfect with garlic rice.',
+        images: [
+          'img/Beef/Beef Salpicao.jpeg'
+        ],
+        description: 'Beef Salpicao is a simple yet flavorful Filipino dish made with tender beef cubes stir-fried with lots of garlic, soy sauce, and Worcestershire sauce. This quick-cooking dish is known for its bold, garlicky flavor and tender texture. It\'s typically served with steamed rice or garlic fried rice for a satisfying meal.',
+        usage: 'Serve immediately while hot for best texture and flavor. Pairs perfectly with steamed white rice or garlic fried rice. For best results, cook quickly over high heat to maintain the tenderness of the beef.',
+        ingredients: 'Beef sirloin or tenderloin (cut into cubes), garlic (lots!), soy sauce, Worcestershire sauce, olive oil, butter, salt, ground black pepper, hot sauce (optional).'
+      },
+      'bistek-tagalog': {
+        name: 'Bistek Tagalog',
+        rating: '4.9 stars',
+        reviews: '201 reviews',
+        price: 920,
+        shortDescription: 'Tender beef slices marinated in soy sauce and calamansi, cooked with onions. A classic Filipino dish with tangy flavors.',
+        images: [
+          'img/Beef/Bistek Tagalog.jpeg'
+        ],
+        description: 'Bistek Tagalog is a classic Filipino dish featuring tender beef slices marinated in soy sauce and calamansi (Philippine lime), then pan-fried and simmered with onions. This beloved dish is known for its tangy and savory flavor profile, created by the combination of soy sauce, calamansi juice, and caramelized onions. It\'s a simple yet delicious dish that pairs perfectly with rice.',
+        usage: 'Serve hot over steamed white rice with the delicious sauce poured over. The caramelized onions add sweetness and flavor. Drizzle additional calamansi juice before eating for an extra tangy kick. Best enjoyed freshly cooked but reheats well.',
+        ingredients: 'Beef sirloin (thinly sliced), calamansi juice, soy sauce, garlic, onions (sliced into rings), ground black pepper, cooking oil, beef broth or water, salt, butter (optional).'
+      },
+      'chicken-adobo': {
+        name: 'Chicken Adobo',
+        rating: '4.8 stars',
+        reviews: '312 reviews',
+        price: 780,
+        shortDescription: 'A classic Filipino comfort food, featuring tender chicken pieces braised in a rich, savory sauce of soy sauce and vinegar.',
+        images: [
+          'img/Chicken/Chicken adobo.png'
+        ],
+        description: 'Chicken Adobo is the most popular Filipino dish, known for its savory, tangy, and slightly sweet flavor. This classic comfort food features tender chicken pieces braised in a rich sauce made from soy sauce, vinegar, garlic, bay leaves, and black peppercorns. The dish is traditionally cooked low and slow until the chicken is incredibly tender and the sauce is reduced to a thick, flavorful glaze.',
+        usage: 'Best served hot over steamed white rice. The sauce is perfect for drizzling over rice. Store leftovers in the refrigerator and reheat gently to maintain the tender texture. Can also be enjoyed cold as a picnic dish.',
+        ingredients: 'Chicken (thighs and drumsticks), soy sauce, white vinegar, garlic, bay leaves, whole black peppercorns, brown sugar, cooking oil, water.'
+      },
+      'fried-chicken': {
+        name: 'Fried Chicken',
+        rating: '4.7 stars',
+        reviews: '289 reviews',
+        price: 850,
+        shortDescription: 'A platter of crispy, bite-sized chicken pieces, topped with vibrant green onions, served with a side of dipping sauce.',
+        images: [
+          'img/Chicken/fried chicken.jpg'
+        ],
+        description: 'Our signature fried chicken features perfectly seasoned, crispy-coated chicken pieces that are golden brown on the outside and juicy on the inside. Each piece is marinated in a special blend of spices, then coated in our secret breading mixture before being fried to perfection. Served with fresh green onions and your choice of dipping sauce.',
+        usage: 'Serve immediately while hot and crispy for the best experience. Pairs well with rice, mashed potatoes, or coleslaw. For leftovers, reheat in an oven or air fryer to maintain crispiness.',
+        ingredients: 'Chicken pieces, flour, cornstarch, garlic powder, onion powder, paprika, salt, black pepper, eggs, buttermilk, cooking oil, green onions.'
+      },
+      'chicken-wings': {
+        name: 'Fried Chicken Wings',
+        rating: '4.6 stars',
+        reviews: '198 reviews',
+        price: 720,
+        shortDescription: 'Variety pack with spicy and golden-brown wings, great for parties and mixed cravings.',
+        images: [
+          'img/Chicken/Chicken Wings.png'
+        ],
+        description: 'Our chicken wings come in a variety of flavors and heat levels, perfect for any gathering. Choose from our signature buffalo wings, honey BBQ, garlic parmesan, or spicy Asian-inspired flavors. Each wing is carefully seasoned and cooked to achieve the perfect balance of crispy skin and tender meat.',
+        usage: 'Perfect as an appetizer or main dish. Serve with celery sticks, carrot sticks, and your favorite dipping sauces. Great for parties, game nights, or casual dining.',
+        ingredients: 'Chicken wings, hot sauce, butter, honey, BBQ sauce, garlic, parmesan cheese, soy sauce, sesame oil, ginger, scallions, cooking oil.'
+      },
+      'chicken-inasal': {
+        name: 'Chicken Inasal',
+        rating: '4.9 stars',
+        reviews: '267 reviews',
+        price: 820,
+        shortDescription: 'Smoky, tangy grilled chicken pieces. Ideal for gatherings with grilled favorites.',
+        images: [
+          'img/Chicken/chicken inasal.jpg'
+        ],
+        description: 'Chicken Inasal is a famous Filipino grilled chicken dish marinated in a blend of vinegar, calamansi (Philippine lime), lemongrass, garlic, ginger, and spices. It is traditionally cooked over charcoal and basted with a flavorful annatto oil that gives it its distinct smoky aroma, savory taste, and vibrant golden color. Perfectly juicy and tender, it\'s a well-loved comfort food.',
+        usage: 'Best enjoyed freshly grilled and served hot. Simply heat on a grill, pan, or oven until warm, then serve with rice and dipping sauces such as soy sauce, calamansi, or vinegar with chili. It can also be shredded and used as a flavorful topping for rice bowls, wraps, or salads.',
+        ingredients: 'Chicken, vinegar, calamansi, lemongrass, garlic, ginger, annatto oil, salt, sugar, soy sauce, ground pepper.'
+      },
+      'chicken-bicol-express': {
+        name: 'Chicken Bicol Express',
+        rating: '4.5 stars',
+        reviews: '156 reviews',
+        price: 880,
+        shortDescription: 'A rich and creamy Filipino stew featuring tender chicken chunks simmered in coconut milk and spiced with green chilies.',
+        images: [
+          'img/Chicken/chicken Bicol express.jpg'
+        ],
+        description: 'Chicken Bicol Express is a rich and creamy Filipino stew inspired by the spicy cuisine of the Bicol region. This hearty dish features tender chicken chunks simmered in coconut milk and spiced with an abundance of green chilies and red bell peppers. The combination of creamy coconut milk and spicy chilies creates a unique flavor profile that\'s both comforting and exciting.',
+        usage: 'Serve hot over steamed white rice. The creamy sauce pairs perfectly with rice. Adjust the spice level by adding more or fewer chilies according to your preference. Store leftovers in the refrigerator and reheat gently.',
+        ingredients: 'Chicken chunks, coconut milk, green chilies, red bell peppers, garlic, onions, ginger, shrimp paste (bagoong), fish sauce, cooking oil, salt, pepper.'
+      },
+      'chicken-curry': {
+        name: 'Chicken Curry',
+        rating: '4.7 stars',
+        reviews: '223 reviews',
+        price: 900,
+        shortDescription: 'A creamy and mildly spicy chicken stew with potatoes and carrots simmered in a rich curry sauce.',
+        images: [
+          'img/Chicken/curry.jpg'
+        ],
+        description: 'Our chicken curry is a comforting and aromatic dish perfect for sharing. This creamy and mildly spicy stew features tender chicken pieces simmered with potatoes and carrots in a rich curry sauce. The blend of spices creates a complex flavor profile that\'s both warming and satisfying, making it perfect for any occasion.',
+        usage: 'Serve hot over steamed white rice or with naan bread. The curry sauce is perfect for soaking up with bread or rice. Garnish with fresh cilantro for added flavor and presentation.',
+        ingredients: 'Chicken pieces, curry powder, coconut milk, potatoes, carrots, onions, garlic, ginger, tomatoes, bay leaves, cinnamon, cardamom, cloves, salt, pepper, cooking oil.'
+      },
+      'honey-bbq-chicken': {
+        name: 'Honey BBQ Chicken',
+        rating: '4.8 stars',
+        reviews: '245 reviews',
+        price: 860,
+        shortDescription: 'A savory-sweet delight, these chicken wings are glazed in a sticky, rich honey-bbq sauce and topped with fresh green onions.',
+        images: [
+          'img/Chicken/honey bbq chicken.png'
+        ],
+        description: 'Our Honey BBQ Chicken features perfectly cooked chicken wings glazed in a sticky, rich honey-bbq sauce that strikes the perfect balance between sweet and savory. Topped with fresh green onions, these wings are a perfect crowd-pleaser for any event. The sauce caramelizes beautifully during cooking, creating a glossy, finger-licking coating.',
+        usage: 'Best served hot as an appetizer or main dish. Perfect for parties, barbecues, or casual dining. Serve with napkins as the sauce can be sticky! Pairs well with coleslaw, potato salad, or grilled vegetables.',
+        ingredients: 'Chicken wings, honey, BBQ sauce, ketchup, brown sugar, apple cider vinegar, Worcestershire sauce, garlic powder, onion powder, salt, pepper, green onions.'
+      },
+      'chicken-stirfry': {
+        name: 'Chicken Stir-fry',
+        rating: '4.6 stars',
+        reviews: '189 reviews',
+        price: 750,
+        shortDescription: 'A stir-fried dish with chicken strips, vegetables, and sometimes rice noodles, perfect for a filling meal.',
+        images: [
+          'img/Chicken/Chicken Stirfry.png'
+        ],
+        description: 'Our chicken stir-fry is a quick and healthy meal featuring tender chicken strips cooked with fresh vegetables in a savory sauce. This colorful dish includes a variety of vegetables like bell peppers, broccoli, carrots, and snap peas, all cooked quickly over high heat to maintain their crisp texture and vibrant colors.',
+        usage: 'Serve immediately while hot over steamed rice or rice noodles. The dish cooks quickly, so have everything ready before starting. Can be customized with your favorite vegetables or protein.',
+        ingredients: 'Chicken breast (sliced), bell peppers, broccoli, carrots, snap peas, garlic, ginger, soy sauce, oyster sauce, sesame oil, cornstarch, cooking oil, salt, pepper.'
+      },
+      'braised-pork': {
+        name: 'Braised Pork',
+        rating: '4.8 stars',
+        reviews: '234 reviews',
+        price: 920,
+        shortDescription: 'Tender pork belly slow-cooked in a rich, savory sauce until fall-apart tender. A comforting Filipino dish perfect for family gatherings.',
+        images: [
+          'img/Pork/Braised Pork.jpg'
+        ],
+        description: 'Our braised pork features tender pork belly that has been slow-cooked in a rich, savory sauce until it becomes incredibly tender and flavorful. This comforting Filipino dish is perfect for family gatherings and special occasions. The pork is cooked low and slow, allowing the flavors to develop and the meat to become fall-apart tender.',
+        usage: 'Best served hot over steamed white rice with the delicious braising sauce poured over. The dish reheats well and can be enjoyed for lunch or dinner. Store leftovers in the refrigerator and reheat gently.',
+        ingredients: 'Pork belly, soy sauce, brown sugar, garlic, onions, bay leaves, star anise, cinnamon stick, cooking oil, water, salt, pepper.'
+      },
+      'crispy-pork-leg': {
+        name: 'Crispy Pork Leg',
+        rating: '4.9 stars',
+        reviews: '198 reviews',
+        price: 1200,
+        shortDescription: 'Golden crispy pork leg with crackling skin and tender meat inside. A festive Filipino dish perfect for special occasions.',
+        images: [
+          'img/Pork/Crispy Pork Leg.jpg'
+        ],
+        description: 'Our crispy pork leg is a show-stopping Filipino dish featuring golden, crackling skin and incredibly tender meat inside. This festive dish is perfect for special occasions and celebrations. The pork leg is carefully prepared and roasted to achieve the perfect balance of crispy exterior and juicy, flavorful interior.',
+        usage: 'Serve hot as the centerpiece of your meal. Cut into portions and serve with steamed rice and dipping sauces. Perfect for celebrations and special gatherings. Best enjoyed immediately while the skin is still crispy.',
+        ingredients: 'Pork leg, salt, pepper, garlic, lemongrass, bay leaves, cooking oil, vinegar, soy sauce.'
+      },
+      'lechon-kawali-kare-kare': {
+        name: 'Lechon Kawali Kare-Kare',
+        rating: '4.7 stars',
+        reviews: '167 reviews',
+        price: 980,
+        shortDescription: 'Crispy lechon kawali served with rich peanut sauce and fresh vegetables. A fusion of two beloved Filipino dishes.',
+        images: [
+          'img/Pork/Lechon Kawali Kare-Kare.jpg'
+        ],
+        description: 'This innovative dish combines two beloved Filipino favorites: crispy lechon kawali and rich kare-kare sauce. The crispy pork belly is served with a creamy peanut-based sauce and fresh vegetables, creating a unique fusion that celebrates the best of Filipino cuisine. The contrast between the crispy pork and creamy sauce is simply delightful.',
+        usage: 'Serve hot with steamed white rice. The crispy pork pairs perfectly with the rich peanut sauce. Add a spoonful of bagoong (fermented shrimp paste) on the side for an authentic Filipino dining experience.',
+        ingredients: 'Pork belly, peanut butter, annatto seeds, eggplant, string beans, banana blossoms, garlic, onions, cooking oil, salt, pepper, fish sauce.'
+      },
+      'pork-barbecue': {
+        name: 'Pork Barbecue',
+        rating: '4.6 stars',
+        reviews: '245 reviews',
+        price: 850,
+        shortDescription: 'Grilled pork skewers marinated in sweet and savory sauce. Perfect for outdoor gatherings and casual dining.',
+        images: [
+          'img/Pork/Pork barbecue.webp'
+        ],
+        description: 'Our pork barbecue features tender pork pieces marinated in a sweet and savory sauce, then grilled to perfection on skewers. This popular Filipino street food is perfect for outdoor gatherings, casual dining, or as a party appetizer. The marinade creates a delicious caramelized coating that\'s both sweet and savory.',
+        usage: 'Perfect for outdoor gatherings, barbecues, or casual dining. Serve with steamed rice and atchara (pickled papaya) for a complete meal. Great as an appetizer or main dish.',
+        ingredients: 'Pork (shoulder or belly), soy sauce, ketchup, brown sugar, garlic, onions, calamansi juice, salt, pepper, cooking oil.'
+      },
+      'pork-menudo': {
+        name: 'Pork Menudo',
+        rating: '4.5 stars',
+        reviews: '189 reviews',
+        price: 780,
+        shortDescription: 'Classic Filipino pork stew with potatoes, carrots, and bell peppers in tomato sauce. A hearty and colorful dish.',
+        images: [
+          'img/Pork/Pork Menudo.jpeg'
+        ],
+        description: 'Pork Menudo is a classic Filipino stew that\'s hearty, colorful, and full of flavor. This beloved dish features tender pork pieces cooked with potatoes, carrots, and bell peppers in a rich tomato-based sauce. The combination of vegetables creates a beautiful, colorful presentation while adding sweetness and texture to the dish.',
+        usage: 'Serve hot over steamed white rice. The stew reheats well and can be enjoyed for lunch or dinner. Store leftovers in the refrigerator and reheat when ready to serve.',
+        ingredients: 'Pork (cubed), potatoes, carrots, bell peppers (red and green), tomato sauce, garlic, onions, bay leaves, salt, pepper, cooking oil, water.'
+      },
+      'pork-ribs': {
+        name: 'Pork Ribs',
+        rating: '4.8 stars',
+        reviews: '223 reviews',
+        price: 1100,
+        shortDescription: 'Succulent pork ribs slow-cooked until tender and glazed with our special house sauce. Fall-off-the-bone delicious.',
+        images: [
+          'img/Pork/pork ribs.jpg'
+        ],
+        description: 'Our pork ribs are slow-cooked until they become incredibly tender and fall-off-the-bone delicious. Each rack is carefully prepared and glazed with our special house sauce that creates a perfect balance of sweet and savory flavors. These ribs are perfect for sharing and make an impressive centerpiece for any meal.',
+        usage: 'Best served hot as the main dish. Perfect for sharing with family and friends. Serve with steamed rice, coleslaw, or grilled vegetables. Great for barbecues and special occasions.',
+        ingredients: 'Pork ribs, BBQ sauce, brown sugar, garlic powder, onion powder, paprika, salt, pepper, apple cider vinegar, Worcestershire sauce, cooking oil.'
+      },
+      'sinigang-na-baboy': {
+        name: 'Sinigang na Baboy',
+        rating: '4.7 stars',
+        reviews: '201 reviews',
+        price: 820,
+        shortDescription: 'Classic Filipino sour soup with tender pork, vegetables, and tamarind broth. Comforting and refreshing.',
+        images: [
+          'img/Pork/sinigang na baboy.jpg'
+        ],
+        description: 'Sinigang na Baboy is a classic Filipino sour soup that\'s both comforting and refreshing. This beloved dish features tender pork pieces cooked with fresh vegetables in a tangy tamarind broth. The sourness of the soup is perfectly balanced with the sweetness of the vegetables, creating a unique and satisfying flavor profile.',
+        usage: 'Serve hot as a main dish or soup course. Perfect with steamed white rice. The sour broth is refreshing and helps cleanse the palate. Store leftovers in the refrigerator and reheat gently.',
+        ingredients: 'Pork (ribs or belly), tamarind (or tamarind powder), tomatoes, onions, radish, string beans, eggplant, okra, spinach, salt, pepper, fish sauce.'
+      },
+      'ginisang-monggo-kalabasa': {
+        name: 'Ginisang Monggo with Kalabasa',
+        rating: '4.6 stars',
+        reviews: '178 reviews',
+        price: 650,
+        shortDescription: 'A nutritious mung bean stew with squash, commonly enjoyed in Filipino households. Rich in protein and vitamins.',
+        images: [
+          'img/Vegetables/Ginisang Monggo with Kalabasa.png'
+        ],
+        description: 'Ginisang Monggo with Kalabasa is a nutritious and comforting Filipino dish that combines mung beans with squash (kalabasa) in a savory stew. This healthy dish is rich in protein, fiber, and vitamins, making it a popular choice in Filipino households. The mung beans provide a creamy texture while the squash adds sweetness and color to the dish.',
+        usage: 'Best served hot over steamed white rice. This dish reheats well and can be enjoyed for lunch or dinner. Store leftovers in the refrigerator and reheat gently. Perfect for healthy eating and vegetarian diets.',
+        ingredients: 'Mung beans, squash (kalabasa), garlic, onions, tomatoes, spinach or malunggay leaves, cooking oil, salt, pepper, fish sauce, water.'
+      },
+      'ginisang-ampalaya': {
+        name: 'Ginisang Ampalaya',
+        rating: '4.4 stars',
+        reviews: '156 reviews',
+        price: 580,
+        shortDescription: 'Classic Filipino dish featuring sautéed bitter melon with eggs, garlic, onions, and tomatoes. Healthy and flavorful.',
+        images: [
+          'img/Vegetables/ginisang amplaya.png'
+        ],
+        description: 'Ginisang Ampalaya is a classic Filipino vegetable dish that transforms the naturally bitter ampalaya (bitter melon) into a delicious and nutritious meal. The bitterness is balanced by the addition of eggs, garlic, onions, and tomatoes, creating a complex flavor profile. This dish is known for its health benefits and is often recommended for its medicinal properties.',
+        usage: 'Serve hot over steamed white rice. The dish is best enjoyed fresh but can be reheated. Store leftovers in the refrigerator and reheat gently. Perfect for those looking for healthy, low-calorie meals.',
+        ingredients: 'Ampalaya (bitter melon), eggs, garlic, onions, tomatoes, cooking oil, salt, pepper, fish sauce.'
+      },
+      'garlic-tokwa-kangkong': {
+        name: 'Garlic Tokwa and Kangkong in Oyster Sauce',
+        rating: '4.7 stars',
+        reviews: '189 reviews',
+        price: 620,
+        shortDescription: 'Flavorful stir-fry with tofu and water spinach in savory oyster sauce. A perfect combination of textures and flavors.',
+        images: [
+          'img/Vegetables/Garlic Tokwa and Kangkong in Oyster Sauce.png'
+        ],
+        description: 'This delicious vegetarian dish combines crispy tofu (tokwa) with fresh water spinach (kangkong) in a savory oyster sauce. The dish offers a perfect balance of textures - the crispy tofu contrasts beautifully with the tender kangkong leaves. The oyster sauce adds depth and umami flavor, making this a satisfying and healthy meal option.',
+        usage: 'Serve immediately while hot over steamed white rice. The dish cooks quickly, so have everything ready before starting. Best enjoyed fresh to maintain the crispy texture of the tofu.',
+        ingredients: 'Tofu (tokwa), kangkong (water spinach), garlic, onions, oyster sauce, soy sauce, cooking oil, salt, pepper, sesame oil.'
+      },
+      'tortang-talong': {
+        name: 'Tortang Talong',
+        rating: '4.8 stars',
+        reviews: '203 reviews',
+        price: 550,
+        shortDescription: 'Filipino eggplant omelet made with grilled eggplant and eggs. A simple yet delicious vegetarian dish perfect for any meal.',
+        images: [
+          'img/Vegetables/Tortang Talong.png'
+        ],
+        description: 'Tortang Talong is a beloved Filipino eggplant omelet that showcases the versatility of eggplant. The eggplant is first grilled to remove the skin and soften the flesh, then dipped in beaten eggs and pan-fried until golden. This simple yet delicious dish is perfect for breakfast, lunch, or dinner, and is a great way to enjoy vegetables.',
+        usage: 'Serve hot with steamed white rice and a side of ketchup or banana ketchup for dipping. The dish reheats well and can be enjoyed cold as well. Perfect for packed lunches.',
+        ingredients: 'Eggplant (talong), eggs, garlic, onions, salt, pepper, cooking oil.'
+      },
+      'lumpiang-hubad': {
+        name: 'Lumpiang Hubad',
+        rating: '4.5 stars',
+        reviews: '167 reviews',
+        price: 600,
+        shortDescription: 'Fresh sautéed vegetables served without wrapper, featuring crisp vegetables in a savory sauce. Healthy and refreshing.',
+        images: [
+          'img/Vegetables/Lumpiang Hubad.png'
+        ],
+        description: 'Lumpiang Hubad, which means "naked spring roll," is a Filipino vegetable dish that features the same fresh, sautéed vegetable filling as lumpiang sariwa but served without the wrapper. This healthy dish combines various vegetables like carrots, cabbage, string beans, and sometimes shrimp or pork, all cooked in a light, savory sauce.',
+        usage: 'Serve hot over steamed white rice. The dish is best enjoyed fresh to maintain the crisp texture of the vegetables. Can be served as a main dish or side dish.',
+        ingredients: 'Carrots, cabbage, string beans, bean sprouts, onions, garlic, soy sauce, cooking oil, salt, pepper, optional shrimp or pork.'
+      },
+      'chopseuy': {
+        name: 'Chopseuy',
+        rating: '4.6 stars',
+        reviews: '194 reviews',
+        price: 680,
+        shortDescription: 'Colorful mixed vegetable stir-fry with a variety of fresh vegetables in a light, savory sauce. Perfect for healthy dining.',
+        images: [
+          'img/Vegetables/chopseuy.jpg'
+        ],
+        description: 'Chopseuy is a colorful and nutritious Filipino-Chinese dish that features a variety of fresh vegetables stir-fried together in a light, savory sauce. This healthy dish typically includes cabbage, carrots, bell peppers, broccoli, and other seasonal vegetables, creating a beautiful rainbow of colors and flavors on your plate.',
+        usage: 'Serve immediately while hot over steamed white rice. The vegetables should remain crisp and colorful. Perfect as a main dish for vegetarians or as a side dish to complement other meals.',
+        ingredients: 'Cabbage, carrots, bell peppers, broccoli, cauliflower, snow peas, mushrooms, garlic, onions, soy sauce, oyster sauce, cooking oil, salt, pepper.'
+      },
+      'tofu-sisig': {
+        name: 'Tofu Sisig',
+        rating: '4.7 stars',
+        reviews: '212 reviews',
+        price: 580,
+        shortDescription: 'Vegetarian version of the popular sisig dish made with crispy tofu, onions, and chili peppers. Spicy and flavorful.',
+        images: [
+          'img/Vegetables/tofu sisig.jpg'
+        ],
+        description: 'Tofu Sisig is a vegetarian twist on the popular Filipino sisig dish, replacing meat with crispy tofu cubes. This flavorful dish combines crispy tofu with onions, chili peppers, and a tangy sauce, creating a spicy and satisfying meal. It\'s perfect for vegetarians who want to enjoy the bold flavors of traditional Filipino cuisine.',
+        usage: 'Serve hot as an appetizer or main dish with steamed white rice. The dish is best enjoyed fresh while the tofu is still crispy. Perfect for those who love spicy food.',
+        ingredients: 'Tofu, onions, chili peppers, garlic, soy sauce, vinegar, calamansi juice, cooking oil, salt, pepper, mayonnaise (optional).'
+      },
+      'buko-pandan': {
+        name: 'Buko Pandan',
+        rating: '4.8 stars',
+        reviews: '267 reviews',
+        price: 450,
+        shortDescription: 'A refreshing Filipino dessert made with tender young coconut strips and chewy pandan-flavored jelly mixed in creamy sweetened milk.',
+        images: [
+          'img/Dessert/Buko Pandan.png',
+          'img/Dessert/buko pandan.jpg'
+        ],
+        description: 'Buko Pandan is a refreshing and popular Filipino dessert that combines the tropical flavors of young coconut (buko) with the aromatic essence of pandan leaves. This delightful treat features tender coconut strips and chewy pandan-flavored jelly mixed in creamy sweetened milk, creating a perfect balance of textures and flavors. It\'s especially popular during hot weather and celebrations.',
+        usage: 'Best served chilled for maximum refreshment. Perfect as a dessert after meals or as a sweet treat during hot weather. Store in the refrigerator and consume within 2-3 days for best quality.',
+        ingredients: 'Young coconut strips, pandan jelly (agar-agar), pandan extract, sweetened condensed milk, evaporated milk, sugar, water, green food coloring (optional).'
+      },
+      'cathedral-window-gelatin': {
+        name: 'Cathedral Window Gelatin',
+        rating: '4.6 stars',
+        reviews: '189 reviews',
+        price: 380,
+        shortDescription: 'A festive dessert that captivates both the eyes and taste buds. Colorful gelatin cubes in creamy milk create a beautiful stained glass effect.',
+        images: [
+          'img/Dessert/Cathedral Window Gelatin.png'
+        ],
+        description: 'Cathedral Window Gelatin is a visually stunning Filipino dessert that resembles stained glass windows, hence its name. This festive treat features colorful gelatin cubes of different flavors arranged in a creamy milk mixture, creating a beautiful mosaic effect. Each bite offers a delightful combination of fruity gelatin and creamy sweetness, making it a favorite at parties and celebrations.',
+        usage: 'Serve chilled as a dessert or party treat. The gelatin should be firm but not too hard. Perfect for special occasions and celebrations. Store in the refrigerator and consume within 3-4 days.',
+        ingredients: 'Gelatin powder, fruit juices (various flavors), sugar, evaporated milk, condensed milk, water, food coloring (red, green, yellow, blue).'
+      },
+      'leche-flan': {
+        name: 'Leche Flan',
+        rating: '4.9 stars',
+        reviews: '312 reviews',
+        price: 520,
+        shortDescription: 'A timeless Filipino custard dessert known for its silky texture and rich caramel flavor. A classic treat perfect for any celebration.',
+        images: [
+          'img/Dessert/Leche Flan.png'
+        ],
+        description: 'Leche Flan is a timeless Filipino custard dessert that has become a staple in celebrations and special occasions. This rich and creamy dessert features a silky-smooth custard made from eggs, milk, and sugar, topped with a golden caramel sauce. The contrast between the sweet custard and the slightly bitter caramel creates a perfect harmony of flavors that has made this dessert beloved across generations.',
+        usage: 'Serve chilled as a dessert after meals. Perfect for celebrations, birthdays, and special occasions. Can be served with fresh fruits or enjoyed on its own. Store in the refrigerator and consume within 5-7 days.',
+        ingredients: 'Eggs, evaporated milk, condensed milk, sugar, vanilla extract, water (for caramel).'
+      },
+      'maja-blanca': {
+        name: 'Maja Blanca',
+        rating: '4.7 stars',
+        reviews: '198 reviews',
+        price: 420,
+        shortDescription: 'A creamy coconut pudding made from coconut milk, cornstarch, and sugar, topped with toasted latik or corn kernels. Smooth and delightful.',
+        images: [
+          'img/Dessert/Maja Blanca.png'
+        ],
+        description: 'Maja Blanca is a creamy and delightful Filipino coconut pudding that showcases the rich flavors of coconut milk. This smooth dessert is made from coconut milk, cornstarch, and sugar, creating a velvety texture that melts in your mouth. Traditionally topped with toasted latik (coconut curds) or sweet corn kernels, it offers a perfect balance of creamy sweetness and subtle coconut flavor.',
+        usage: 'Serve chilled as a dessert or afternoon snack. Perfect for casual gatherings and family meals. The pudding should be firm but creamy. Store in the refrigerator and consume within 3-4 days for best quality.',
+        ingredients: 'Coconut milk, cornstarch, sugar, sweet corn kernels, latik (toasted coconut curds), salt, water.'
+      },
+      'macaroni-fruit-salad': {
+        name: 'Macaroni Fruit Salad',
+        rating: '4.5 stars',
+        reviews: '234 reviews',
+        price: 480,
+        shortDescription: 'A uniquely Filipino twist on the classic fruit salad, made with cooked macaroni, mixed fruits, and a rich, creamy dressing.',
+        images: [
+          'img/Dessert/Macaroni Salad.png'
+        ],
+        description: 'Macaroni Fruit Salad is a uniquely Filipino dessert that combines the comfort of pasta with the sweetness of mixed fruits. This creative twist on the classic fruit salad features cooked macaroni pasta mixed with various fruits like pineapple, apples, grapes, and cherries, all bound together with a rich, creamy dressing made from sweetened cream and condensed milk. It\'s a popular dessert during holidays and celebrations.',
+        usage: 'Serve chilled as a dessert or sweet side dish. Perfect for potlucks, parties, and holiday celebrations. Best enjoyed fresh but can be stored in the refrigerator for 2-3 days. Mix well before serving.',
+        ingredients: 'Macaroni pasta, pineapple chunks, apples, grapes, cherries, sweetened cream, condensed milk, mayonnaise, sugar, salt.'
+      }
+    };
+
+    // Get URL parameter
+    function getUrlParameter(name) {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(name);
+    }
+
+    // Load product data
+    function loadProduct() {
+      const productId = getUrlParameter('product') || 'beef-kare-kare';
+      const product = products[productId];
+      
+      if (!product) {
+        console.error('Product not found');
+        return;
+      }
+
+      // Update product information
+      document.getElementById('product-name').textContent = product.name;
+      document.getElementById('product-rating').textContent = `★★★★★ (${product.rating}) • ${product.reviews}`;
+      document.getElementById('product-price').textContent = `₱${product.price}`;
+      document.getElementById('product-short-description').textContent = product.shortDescription;
+      document.getElementById('product-description').textContent = product.description;
+      document.getElementById('product-usage').textContent = product.usage;
+      document.getElementById('product-ingredients').textContent = product.ingredients;
+
+      // Update back button based on product category
+      updateBackButton(productId);
+
+      // Load images into carousel
+      loadCarousel(product.images);
+
+      // Store current product data
+      window.currentProduct = product;
+      window.currentQuantity = 1;
+    }
+
+    // Update back button based on product category
+    function updateBackButton(productId) {
+      const backButton = document.getElementById('back-button');
+      
+      if (productId.startsWith('beef-')) {
+        backButton.onclick = function() { window.location.href = 'Beef-Category.html'; };
+        backButton.innerHTML = '<i class="fas fa-arrow-left"></i> Back to Beef Category';
+      } else if (productId.startsWith('chicken-') || productId === 'fried-chicken') {
+        backButton.onclick = function() { window.location.href = 'Chicken-Category.html'; };
+        backButton.innerHTML = '<i class="fas fa-arrow-left"></i> Back to Chicken Category';
+      } else if (productId.startsWith('pork-') || productId === 'braised-pork' || productId === 'crispy-pork-leg' || productId === 'lechon-kawali-kare-kare' || productId === 'sinigang-na-baboy') {
+        backButton.onclick = function() { window.location.href = 'Pork-Category.html'; };
+        backButton.innerHTML = '<i class="fas fa-arrow-left"></i> Back to Pork Category';
+      } else if (productId.startsWith('vegetable-') || productId.startsWith('veg-') || productId === 'ginisang-monggo-kalabasa' || productId === 'ginisang-ampalaya' || productId === 'garlic-tokwa-kangkong' || productId === 'tortang-talong' || productId === 'lumpiang-hubad' || productId === 'chopseuy' || productId === 'tofu-sisig') {
+        backButton.onclick = function() { window.location.href = 'Vegetables-Category.html'; };
+        backButton.innerHTML = '<i class="fas fa-arrow-left"></i> Back to Vegetables Category';
+      } else if (productId.startsWith('dessert-') || productId.startsWith('dessert') || productId === 'buko-pandan' || productId === 'cathedral-window-gelatin' || productId === 'leche-flan' || productId === 'maja-blanca' || productId === 'macaroni-fruit-salad') {
+        backButton.onclick = function() { window.location.href = 'Dessert-Category.html'; };
+        backButton.innerHTML = '<i class="fas fa-arrow-left"></i> Back to Dessert Category';
+      } else {
+        // Default fallback
+        backButton.onclick = function() { window.location.href = 'index.html'; };
+        backButton.innerHTML = '<i class="fas fa-arrow-left"></i> Back to Home';
+      }
+    }
+
+    // Carousel functionality
+    let currentImageIndex = 0;
+
+    function loadCarousel(images) {
+      const container = document.getElementById('product-image-container');
+      let carouselHTML = `
+        <div class="product-image-container">
+          <div class="image-carousel">
+            <div class="carousel-wrapper">
+      `;
+      
+      images.forEach((img, index) => {
+        carouselHTML += `
+          <div class="carousel-slide">
+            <img src="${img}" alt="${window.currentProduct?.name || 'Product'}">
+          </div>
+        `;
+      });
+      
+      carouselHTML += `
+            </div>
+            ${images.length > 1 ? `
+              <button class="carousel-arrow left" onclick="prevImage()">❮</button>
+              <button class="carousel-arrow right" onclick="nextImage()">❯</button>
+            ` : ''}
+          </div>
+          ${images.length > 1 ? '<div class="carousel-dots"></div>' : ''}
+        </div>
+      `;
+      
+      container.innerHTML = carouselHTML;
+
+      // Add dots
+      if (images.length > 1) {
+        const dotsContainer = container.querySelector('.carousel-dots');
+        for (let i = 0; i < images.length; i++) {
+          const dot = document.createElement('div');
+          dot.className = 'dot' + (i === 0 ? ' active' : '');
+          dot.onclick = () => goToImage(i);
+          dotsContainer.appendChild(dot);
+        }
+      }
+
+      currentImageIndex = 0;
+    }
+
+    function updateCarousel() {
+      const wrapper = document.querySelector('.carousel-wrapper');
+      if (wrapper) {
+        wrapper.style.transform = `translateX(-${currentImageIndex * 100}%)`;
+      }
+
+      // Update dots
+      const dots = document.querySelectorAll('.dot');
+      dots.forEach((dot, index) => {
+        dot.classList.toggle('active', index === currentImageIndex);
+      });
+    }
+
+    function nextImage() {
+      const product = window.currentProduct;
+      if (!product || product.images.length <= 1) return;
+      
+      currentImageIndex = (currentImageIndex + 1) % product.images.length;
+      updateCarousel();
+    }
+
+    function prevImage() {
+      const product = window.currentProduct;
+      if (!product || product.images.length <= 1) return;
+      
+      currentImageIndex = (currentImageIndex - 1 + product.images.length) % product.images.length;
+      updateCarousel();
+    }
+
+    function goToImage(index) {
+      currentImageIndex = index;
+      updateCarousel();
+    }
+
+    // Quantity functions
+    function increaseQuantity() {
+      window.currentQuantity = (window.currentQuantity || 1) + 1;
+      document.getElementById('quantity-input').value = window.currentQuantity;
+    }
+
+    function decreaseQuantity() {
+      if (window.currentQuantity > 1) {
+        window.currentQuantity--;
+        document.getElementById('quantity-input').value = window.currentQuantity;
+      }
+    }
+
+    // Price update based on serving size
+    function updatePrice() {
+      const servingSize = document.getElementById('serving-size').value;
+      const basePrice = window.currentProduct.price;
+      
+      let multiplier = 1;
+      switch(servingSize) {
+        case 'small':
+          multiplier = 1;
+          break;
+        case 'medium':
+          multiplier = 1.8;
+          break;
+        case 'large':
+          multiplier = 3.2;
+          break;
+      }
+      
+      const newPrice = Math.round(basePrice * multiplier);
+      document.getElementById('product-price').textContent = `₱${newPrice}`;
+    }
+
+    // Cart management functions
+    function getCart() {
+      const cart = localStorage.getItem('cart');
+      return cart ? JSON.parse(cart) : [];
+    }
+
+    function saveCart(cart) {
+      localStorage.setItem('cart', JSON.stringify(cart));
+    }
+
+    function addToCart() {
+      const product = window.currentProduct;
+      const quantity = window.currentQuantity || 1;
+      const servingSize = document.getElementById('serving-size').value;
+      
+      if (!product) {
+        alert('Product not found!');
+        return;
+      }
+
+      // Calculate price based on serving size
+      let multiplier = 1;
+      switch(servingSize) {
+        case 'small':
+          multiplier = 1;
+          break;
+        case 'medium':
+          multiplier = 1.8;
+          break;
+        case 'large':
+          multiplier = 3.2;
+          break;
+      }
+      
+      const itemPrice = Math.round(product.price * multiplier);
+      const totalPrice = itemPrice * quantity;
+
+      // Create cart item
+      const cartItem = {
+        id: product.name.toLowerCase().replace(/\s+/g, '-'),
+        name: product.name,
+        price: itemPrice,
+        quantity: quantity,
+        servingSize: servingSize,
+        image: product.images[0],
+        totalPrice: totalPrice
+      };
+
+      // Get current cart
+      let cart = getCart();
+      
+      // Check if item already exists with same serving size
+      const existingItemIndex = cart.findIndex(item => 
+        item.id === cartItem.id && item.servingSize === cartItem.servingSize
+      );
+
+      if (existingItemIndex > -1) {
+        // Update existing item quantity
+        cart[existingItemIndex].quantity += quantity;
+        cart[existingItemIndex].totalPrice = cart[existingItemIndex].price * cart[existingItemIndex].quantity;
+      } else {
+        // Add new item
+        cart.push(cartItem);
+      }
+
+      // Save cart
+      saveCart(cart);
+      
+      // Show success message
+      alert(`Added ${quantity}x ${product.name} (${servingSize}) to cart!\nTotal: ₱${totalPrice.toLocaleString()}`);
+      
+      // Update cart icon count
+      updateCartIcon();
+    }
+
+    function updateCartIcon() {
+      const cart = getCart();
+      const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+      
+      // Update cart icon in navbar
+      const cartIcon = document.querySelector('.fa-shopping-cart');
+      if (cartIcon) {
+        // Remove existing badge if any
+        const existingBadge = cartIcon.parentElement.querySelector('.cart-badge');
+        if (existingBadge) {
+          existingBadge.remove();
+        }
+        
+        // Add badge if there are items
+        if (totalItems > 0) {
+          const badge = document.createElement('span');
+          badge.className = 'cart-badge';
+          badge.textContent = totalItems;
+          badge.style.cssText = `
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: #ff4444;
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+          `;
+          cartIcon.parentElement.style.position = 'relative';
+          cartIcon.parentElement.appendChild(badge);
+        }
+      }
+    }
+
+    // Tab switching
+    function switchTab(index) {
+      // Hide all tabs
+      document.getElementById('description-tab').style.display = 'none';
+      document.getElementById('reviews-tab').style.display = 'none';
+      document.getElementById('shipping-tab').style.display = 'none';
+      
+      // Remove active class from all tabs
+      const tabs = document.querySelectorAll('.tab');
+      tabs.forEach(tab => tab.classList.remove('active'));
+      
+      // Show selected tab and add active class
+      tabs[index].classList.add('active');
+      
+      if (index === 0) {
+        document.getElementById('description-tab').style.display = 'block';
+      } else if (index === 1) {
+        document.getElementById('reviews-tab').style.display = 'block';
+      } else {
+        document.getElementById('shipping-tab').style.display = 'block';
+      }
+    }
+
+    // Initialize on page load
+    window.addEventListener('DOMContentLoaded', () => {
+      loadProduct();
+      updateCartIcon();
+      
+      // Add cart icon click functionality
+      const cartIcon = document.querySelector('.fa-shopping-cart');
+      if (cartIcon) {
+        cartIcon.addEventListener('click', () => {
+          window.location.href = 'Cart-View.html';
+        });
+        cartIcon.style.cursor = 'pointer';
+      }
+    });
+
+    // Keyboard navigation for carousel
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') prevImage();
+      if (e.key === 'ArrowRight') nextImage();
+    });
+  </script>
 
 </body>
 </html>

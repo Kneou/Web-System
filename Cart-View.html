@@ -14,78 +14,44 @@
     </div>
     <nav>
       <ul>
-        <li><a href="#">HOME</a></li>
+        <li><a href="index.html">HOME</a></li>
         <li><a href="#">TRAYS</a></li>
         <li><a href="#">BEST SELLER</a></li>
-        <li><a href="#">CHEFS</a></li>
-        <li><a href="#">ABOUT</a></li>
+        <li><a href="Chef.html">CHEFS</a></li>
+        <li><a href="About.html">ABOUT</a></li>
       </ul>
     </nav>
     <div id="icons">
       <i class="fas fa-search"></i>
       <i class="fas fa-user"></i>
-      <i class="fas fa-shopping-cart"></i>
+      <i class="fas fa-shopping-cart" onclick="window.location.href='Cart-View.html'" style="cursor:pointer;"></i>
     </div>
   </header>
 
   <!-- CART SECTION -->
   <main id="cart">
+    <button onclick="window.location.href='index.html'" class="back-button cute-btn"><i class="fas fa-arrow-left"></i> <b>Back to Home</b></button>
     <div id="cart-container">
   <!-- Left Side: Items -->
   <div class="cart-items">
     <h2 class="cart-title">Your Cart</h2>
-
-    <div class="cart-item">
-      <img src="img\fried chicken.png" alt="Fried Chicken">
-      <div class="item-info">
-        <h4>Fried Chicken</h4>
-        <p class="available">✔ Available Today</p>
-      </div>
-      <div class="item-actions">
-        <button class="qty-btn">-</button>
-        <input type="text" value="2" readonly>
-        <button class="qty-btn">+</button>
-      </div>
-      <div class="price">₱1240.00</div>
+    <div id="cart-items-list">
+      <!-- Cart items will be dynamically loaded here -->
     </div>
-
-    <div class="cart-item">
-      <img src="img\tofu sisig.jpg" alt="Tofu Sisig">
-      <div class="item-info">
-        <h4>Tofu Sisig</h4>
-        <p class="available">✔ Available Today</p>
-      </div>
-      <div class="item-actions">
-        <button class="qty-btn">-</button>
-        <input type="text" value="1" readonly>
-        <button class="qty-btn">+</button>
-      </div>
-      <div class="price">₱810.00</div>
-    </div>
-
-    <div class="cart-item">
-      <img src="img\sinigang na baboy.jpg" alt="Sinigang na Baboy">
-      <div class="item-info">
-        <h4>Sinigang na Baboy</h4>
-        <p class="available">✔ Available Today</p>
-      </div>
-      <div class="item-actions">
-        <button class="qty-btn">-</button>
-        <input type="text" value="2" readonly>
-        <button class="qty-btn">+</button>
-      </div>
-      <div class="price">₱1340.00</div>
+    <div id="empty-cart" style="display: none; text-align: center; padding: 40px;">
+      <h3>Your cart is empty</h3>
+      <p>Add some delicious items to get started!</p>
+      <a href="index.html" class="btn btn-primary">Continue Shopping</a>
     </div>
   </div>
 
   <!-- Right Side: Summary -->
   <div class="summary">
     <h3>Order Summary</h3>
-    <p><span>Subtotal</span> <span>₱1,940.00</span></p>
-    <p><span>Tax (12%)</span> <span>₱232.80</span></p>
-    <p><span>Delivery</span> <span>₱150.00</span></p>
-    <p class="total"><span>Total</span> <span>₱2,322.80</span></p>
-    <button class="checkout-btn">Proceed to Checkout</button>
+    <div id="order-summary">
+      <!-- Order summary will be dynamically loaded here -->
+    </div>
+    <button class="checkout-btn" id="checkout-btn" style="display: none;">Proceed to Checkout</button>
   </div>
 </div>
   </main>
@@ -103,5 +69,184 @@
   <!-- Font Awesome Icons -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/js/all.min.js"></script>
 
-</body>
-</html>
+  <script>
+    // Cart management functions
+    function getCart() {
+      const cart = localStorage.getItem('cart');
+      return cart ? JSON.parse(cart) : [];
+    }
+
+    function saveCart(cart) {
+      localStorage.setItem('cart', JSON.stringify(cart));
+    }
+
+    function updateCartIcon() {
+      const cart = getCart();
+      const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+      
+      // Update cart icon in navbar
+      const cartIcon = document.querySelector('.fa-shopping-cart');
+      if (cartIcon) {
+        // Remove existing badge if any
+        const existingBadge = cartIcon.parentElement.querySelector('.cart-badge');
+        if (existingBadge) {
+          existingBadge.remove();
+        }
+        
+        // Add badge if there are items
+        if (totalItems > 0) {
+          const badge = document.createElement('span');
+          badge.className = 'cart-badge';
+          badge.textContent = totalItems;
+          badge.style.cssText = `
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: #ff4444;
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+          `;
+          cartIcon.parentElement.style.position = 'relative';
+          cartIcon.parentElement.appendChild(badge);
+        }
+      }
+    }
+
+    function updateQuantity(itemId, servingSize, change) {
+      let cart = getCart();
+      const itemIndex = cart.findIndex(item => 
+        item.id === itemId && item.servingSize === servingSize
+      );
+
+      if (itemIndex > -1) {
+        cart[itemIndex].quantity += change;
+        
+        if (cart[itemIndex].quantity <= 0) {
+          cart.splice(itemIndex, 1);
+        } else {
+          cart[itemIndex].totalPrice = cart[itemIndex].price * cart[itemIndex].quantity;
+        }
+        
+        saveCart(cart);
+        loadCartItems();
+        updateCartIcon();
+      }
+    }
+
+    function removeItem(itemId, servingSize) {
+      let cart = getCart();
+      cart = cart.filter(item => !(item.id === itemId && item.servingSize === servingSize));
+      saveCart(cart);
+      loadCartItems();
+      updateCartIcon();
+    }
+
+    function loadCartItems() {
+      const cart = getCart();
+      const cartItemsList = document.getElementById('cart-items-list');
+      const emptyCart = document.getElementById('empty-cart');
+      const checkoutBtn = document.getElementById('checkout-btn');
+
+      if (cart.length === 0) {
+        cartItemsList.style.display = 'none';
+        emptyCart.style.display = 'block';
+        checkoutBtn.style.display = 'none';
+        return;
+      }
+
+      cartItemsList.style.display = 'block';
+      emptyCart.style.display = 'none';
+      checkoutBtn.style.display = 'block';
+
+      cartItemsList.innerHTML = cart.map(item => `
+        <div class="cart-item">
+          <img src="${item.image}" alt="${item.name}" onerror="this.src='img/logo.png'">
+          <div class="item-info">
+            <h4>${item.name}</h4>
+            <p class="available">✔ Available Today</p>
+            <p class="serving-size">Serving: ${item.servingSize === 'small' ? '3-6 pax' : item.servingSize === 'medium' ? '10-15 pax' : '20-25 pax'}</p>
+          </div>
+          <div class="item-actions">
+            <button class="qty-btn" onclick="updateQuantity('${item.id}', '${item.servingSize}', -1)">-</button>
+            <input type="text" value="${item.quantity}" readonly>
+            <button class="qty-btn" onclick="updateQuantity('${item.id}', '${item.servingSize}', 1)">+</button>
+          </div>
+          <div class="price">₱${item.totalPrice.toLocaleString()}</div>
+          <button class="remove-btn" onclick="removeItem('${item.id}', '${item.servingSize}')" style="background: #ff4444; color: white; border: none; padding: 5px 10px; border-radius: 3px; cursor: pointer; margin-left: 10px;">Remove</button>
+        </div>
+      `).join('');
+
+      updateOrderSummary();
+    }
+
+    function updateOrderSummary() {
+      const cart = getCart();
+      const orderSummary = document.getElementById('order-summary');
+      
+      if (cart.length === 0) {
+        orderSummary.innerHTML = '';
+        return;
+      }
+
+      const subtotal = cart.reduce((sum, item) => sum + item.totalPrice, 0);
+      const tax = Math.round(subtotal * 0.12);
+      const delivery = 150;
+      const total = subtotal + tax + delivery;
+
+      orderSummary.innerHTML = `
+        <p><span>Subtotal</span> <span>₱${subtotal.toLocaleString()}</span></p>
+        <p><span>Tax (12%)</span> <span>₱${tax.toLocaleString()}</span></p>
+        <p><span>Delivery</span> <span>₱${delivery.toLocaleString()}</span></p>
+        <p class="total"><span>Total</span> <span>₱${total.toLocaleString()}</span></p>
+      `;
+    }
+
+    function proceedToCheckout() {
+      const cart = getCart();
+      if (cart.length === 0) {
+        alert('Your cart is empty!');
+        return;
+      }
+
+      // Calculate total
+      const subtotal = cart.reduce((sum, item) => sum + item.totalPrice, 0);
+      const tax = Math.round(subtotal * 0.12);
+      const delivery = 150;
+      const total = subtotal + tax + delivery;
+
+      alert(`Proceeding to checkout!\n\nOrder Summary:\nSubtotal: ₱${subtotal.toLocaleString()}\nTax: ₱${tax.toLocaleString()}\nDelivery: ₱${delivery.toLocaleString()}\nTotal: ₱${total.toLocaleString()}\n\nThank you for your order!`);
+      
+      // Clear cart after checkout
+      localStorage.removeItem('cart');
+      loadCartItems();
+      updateCartIcon();
+    }
+
+    // Initialize cart on page load
+    window.addEventListener('DOMContentLoaded', () => {
+      loadCartItems();
+      updateCartIcon();
+      
+      // Add cart icon click functionality
+      const cartIcon = document.querySelector('.fa-shopping-cart');
+      if (cartIcon) {
+        cartIcon.addEventListener('click', () => {
+          window.location.href = 'Cart-View.html';
+        });
+        cartIcon.style.cursor = 'pointer';
+      }
+
+      // Add checkout button functionality
+      const checkoutBtn = document.getElementById('checkout-btn');
+      if (checkoutBtn) {
+        checkoutBtn.addEventListener('click', proceedToCheckout);
+      }
+    });
+  </script>
