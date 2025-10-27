@@ -3,163 +3,112 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tray Tayo</title>
-  <link rel="stylesheet" href="css/style.css">
+  <title>TrayTayo</title>
+  <!-- Bootstrap CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome CDN -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #fff8f0;
+      font-family: 'Poppins', sans-serif;
+    }
+    .navbar {
+      background-color: #f8d4a7;
+    }
+    .nav-link {
+      color: #3b2a1a !important;
+      font-weight: 600;
+    }
+    .nav-link:hover {
+      color: #a86432 !important;
+    }
+  </style>
 </head>
 <body>
-
   <!-- Navbar -->
-  <header id="navbar">
-    <div class="logo">
-      <img src="img/logo.png" alt="TrayTayo Logo">
-    </div>
-    <nav>
-      <ul>
-        <li><a href="index.html">HOME</a></li>
-        <li><a href="Trays.html">TRAYS</a></li>
-        <li><a href="Best-Seller.html">BEST SELLER</a></li>
-        <li><a href="Chef.html">CHEFS</a></li>
-        <li><a href="About.html">ABOUT</a></li>
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <a class="navbar-brand" href="#">
+        <img src="traytayo-logo.png" alt="TrayTayo Logo" height="50">
+      </a>
+      <ul class="navbar-nav ms-auto align-items-center">
+        <li class="nav-item"><a href="#" class="nav-link">HOME</a></li>
+        <li class="nav-item"><a href="#" class="nav-link">TRAYS</a></li>
+        <li class="nav-item"><a href="#" class="nav-link">BEST SELLER</a></li>
+        <li class="nav-item"><a href="#" class="nav-link">CHEFS</a></li>
+        <li class="nav-item"><a href="#" class="nav-link">ABOUT</a></li>
+        <li class="nav-item">
+          <a href="#"><i class="fa-solid fa-magnifying-glass fa-lg mx-3"></i></a>
+        </li>
+
+        <!-- 👤 User Dropdown -->
+        <li class="nav-item dropdown">
+          <a href="#" class="nav-link dropdown-toggle d-flex align-items-center" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fa-solid fa-user fa-lg mx-3"></i>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end text-small" aria-labelledby="userDropdown">
+            <li><a class="dropdown-item" href="#">Profile</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#" id="logoutBtn">Log Out</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item">
+          <a href="#"><i class="fa-solid fa-cart-shopping fa-lg"></i></a>
+        </li>
       </ul>
-    </nav>
-    <div id="icons">
-      <i class="fas fa-search"></i>
-      <i class="fas fa-user"></i>
-      <i class="fas fa-shopping-cart"></i>
     </div>
-  </header>
+  </nav>
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <h1>Delicious Food, Anytime!</h1>
-    <p>Order your favorite meals and get them delivered fast.</p>
-    <div class="buttons">
-      <button class="btn btn-primary">Order Now</button>
-      <button class="btn btn-secondary">Learn More</button>
-    </div>
-  </section>
+  <!-- Content -->
+  <div class="container text-center mt-5">
+    <h1>Welcome to TrayTayo!</h1>
+    <p>Your go-to food tray provider for any occasion.</p>
+  </div>
 
-  <!-- Family Tray Section -->
-  <section id="family-tray">
-    <h2>FAMILY TRAY</h2>
-    <div class="cards">
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-      <a href="Beef-Category.html" style="text-decoration: none; color: inherit;">
-        <div class="card">
-          <img src="img/Beef/kare kare.jpg" alt="Beef Kare-Kare">
-          <div class="food-description">Tender beef in rich peanut sauce with fresh vegetables</div>
-          <p>Beef</p>
-        </div>
-      </a>
+  <!-- Firebase Auth Script -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-app.js";
+    import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-auth.js";
 
-      <a href="Chicken-Category.html" style="text-decoration: none; color: inherit;">
-        <div class="card">
-          <img src="img/Chicken/Chicken adobo.png" alt="Chicken">
-          <div class="food-description">Classic Filipino chicken adobo with soy sauce and vinegar</div>
-          <p>Chicken</p>
-        </div>
-      </a>
+    // 🔧 Firebase Configuration (Updated with new API key)
+    const firebaseConfig = {
+      apiKey: "AIzaSyC1HmoLg9E5pjOTNpWH5owttBM6Dq7Gb8Y",
+      authDomain: "traytayog11.firebaseapp.com",
+      projectId: "traytayog11",
+      storageBucket: "traytayog11.firebasestorage.app",
+      messagingSenderId: "494767618689",
+      appId: "1:494767618689:web:124725e78c467f9dc32b80",
+      measurementId: "G-4PWWJM8DVN"
+    };
 
-      <a href="Pork-Category.html" style="text-decoration: none; color: inherit;">
-        <div class="card">
-          <img src="img/Pork/pork ribs.jpg" alt="Pork Ribs">
-          <div class="food-description">Succulent pork ribs with special house sauce</div>
-          <p>Pork</p>
-        </div>
-      </a>
-      
-      <a href="Vegetables-Category.html" style="text-decoration: none; color: inherit;">
-        <div class="card">
-          <img src="img/Vegetables/chopseuy.jpg" alt="Chopseuy">
-          <div class="food-description">Fresh mixed vegetables with shrimp and pork</div>
-          <p>Vegetables</p>
-        </div>
-      </a>
+    // 🚀 Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
 
-      <a href="Dessert-Category.html" style="text-decoration: none; color: inherit;">
-        <div class="card">
-          <img src="img/Dessert/buko pandan.jpg" alt="Buko Pandan">
-          <div class="food-description">Refreshing coconut and pandan flavored dessert</div>
-          <p>Desserts</p>
-        </div>
-      </a>
-
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer>
-    <div class="subscribe">SUBSCRIBE TO OUR EMAILS</div>
-    <div class="socials">
-      <i class="fas fa-globe"></i>
-      <i class="fab fa-instagram"></i>
-      <i class="fab fa-twitter"></i>
-    </div>
-  </footer>
-
-  <!-- Font Awesome Icons -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/js/all.min.js"></script>
-
-  <script>
-    // Cart management functions
-    function getCart() {
-      const cart = localStorage.getItem('cart');
-      return cart ? JSON.parse(cart) : [];
-    }
-
-    function updateCartIcon() {
-      const cart = getCart();
-      const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-      
-      // Update cart icon in navbar
-      const cartIcon = document.querySelector('.fa-shopping-cart');
-      if (cartIcon) {
-        // Remove existing badge if any
-        const existingBadge = cartIcon.parentElement.querySelector('.cart-badge');
-        if (existingBadge) {
-          existingBadge.remove();
-        }
-        
-        // Add badge if there are items
-        if (totalItems > 0) {
-          const badge = document.createElement('span');
-          badge.className = 'cart-badge';
-          badge.textContent = totalItems;
-          badge.style.cssText = `
-            position: absolute;
-            top: -8px;
-            right: -8px;
-            background: #ff4444;
-            color: white;
-            border-radius: 50%;
-            width: 20px;
-            height: 20px;
-            font-size: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-          `;
-          cartIcon.parentElement.style.position = 'relative';
-          cartIcon.parentElement.appendChild(badge);
-        }
-      }
-    }
-
-    // Initialize cart icon on page load
-    window.addEventListener('DOMContentLoaded', () => {
-      updateCartIcon();
-      
-      // Add cart icon click functionality
-      const cartIcon = document.querySelector('.fa-shopping-cart');
-      if (cartIcon) {
-        cartIcon.addEventListener('click', () => {
-          window.location.href = 'Cart-View.html';
-        });
-        cartIcon.style.cursor = 'pointer';
+    // 🔒 Redirect to login if user is not logged in
+    onAuthStateChanged(auth, (user) => {
+      if (!user) {
+        window.location.href = "login.html";
       }
     });
-  </script>
 
+    // 🚪 Handle Log Out
+    const logoutBtn = document.getElementById("logoutBtn");
+    logoutBtn.addEventListener("click", () => {
+      signOut(auth)
+        .then(() => {
+          alert("You have been logged out.");
+          window.location.href = "login.html";
+        })
+        .catch((error) => {
+          console.error("Logout error:", error);
+        });
+    });
+  </script>
 </body>
 </html>
