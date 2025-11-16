@@ -5,8 +5,43 @@
 <title>About Page</title>
 <style>
 body{font-family:Arial,sans-serif;margin:0;padding:0;background:#fff;color:#222}
-header{background:#f9e8d9;padding:18px 28px;display:flex;justify-content:space-between;align-items:center}
-nav a{margin:0 10px;text-decoration:none;color:#000;font-size:14px}
+#navbar {
+  background-color: #f9d6aa;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 40px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+#navbar .logo img {
+  height: 50px;
+  width: auto;
+}
+#navbar nav {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+}
+#navbar nav ul {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+#navbar nav ul li {
+  margin: 0 15px;
+}
+#navbar nav ul li a {
+  text-decoration: none;
+  color: #2b2b2b;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 2000;
+  letter-spacing: 2px;
+}
+
 main{max-width:1100px;margin:40px auto;padding:0 20px;text-align:center}
 .section-title{font-size:28px;font-weight:700;margin-bottom:40px}
 .founder-section{display:flex;align-items:flex-start;gap:40px;justify-content:center;margin-bottom:60px;text-align:left}
@@ -18,30 +53,55 @@ main{max-width:1100px;margin:40px auto;padding:0 20px;text-align:center}
 </style>
 </head>
 <body>
-<header>
-  <div>LOGO</div>
-  <div>TRAY TAYO</div>
+<a href="#main-content" class="skip-to-content">Skip to main content</a>
+<header id="navbar">
+  <div class="logo"><img src="img/logo.png" alt="TrayTayo Logo" height="50"></div>
   <nav>
-    <a href="#">HOME</a><a href="#">TRAYS</a><a href="#">BEST SELLER</a><a href="#">CHEFS</a><a href="#">ABOUT</a>
-  </nav>
-  <div>🔍 👤 🛒</div>
+  <ul>
+    <li><a href="index.html" class="nav-link">HOME</a></li>
+    <li><a href="Trays.html" class="nav-link">TRAYS</a></li>
+    <li><a href="Best-Seller.html" class="nav-link">BEST SELLER</a></li>
+    <li><a href="Chef.html" class="nav-link">CHEFS</a></li>
+    <li><a href="About.html" class="nav-link active">ABOUT</a></li>
+  </ul>
+</nav>
+  <div id="icons">
+    <i class="fas fa-search"></i>
+    <i class="fas fa-user"></i>
+    <i class="fas fa-shopping-cart"></i>
+  </div>
 </header>
-<main>
+<main id="main-content">
   <button onclick="window.location.href='index.html'" class="back-button" style="display:inline-flex;align-items:center;gap:8px;padding:10px 20px;margin:20px;background-color:#f9d6aa;color:#2b2b2b;text-decoration:none;border-radius:5px;font-weight:600;transition:all 0.3s ease;border:1px solid #d1a871;font-size:16px;"><i class='fas fa-arrow-left'></i> Back to Home</button>
-  </a>
   <div class="section-title">ABOUT</div>
 
   <h2 style="font-size:22px;font-weight:700;margin-bottom:30px">A note from the founder</h2>
   <div class="founder-section">
-    <div class="thumb"></div>
+    <picture class="thumb">
+      <source srcset="img/founder.webp" type="image/webp">
+      <img src="img/founder.jpg" alt="John, Founder of TrayTayo" style="width:100%;height:100%;object-fit:cover;border-radius:8px;">
+    </picture>
     <div class="founder-text">
       <h3>John</h3>
-      <div style="font-weight:600;margin-bottom:6px">Founder, owner and chief designer</div>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+      <div style="font-weight:600;margin-bottom:6px">Founder, Owner, and Chief Designer</div>
+      <p>John founded TrayTayo in 2023 with a mission to bring the warmth of Filipino family feasts to every home. Inspired by his grandmother's recipes, John believes food should be delicious, accessible, and bring people together.</p>
+      <p><b>Our Mission:</b> To celebrate Filipino cuisine and culture by delivering authentic, home-style meals to your doorstep.</p>
+      <p><b>Our Values:</b> Quality, community, and innovation. We support local farmers and chefs, use sustainable packaging, and constantly improve our menu.</p>
+      <p><b>Timeline:</b><br>
+        • 2023: Founded in Manila<br>
+        • 2024: Launched online ordering and delivery<br>
+        • 2025: Expanded to new cities and introduced chef collaborations
+      </p>
     </div>
   </div>
 
-  <div class="social-icons">FB · IG · TikTok · YouTube · Pinterest</div>
+  <div class="social-icons">
+    <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+    <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+    <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+    <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
+  </div>
   <h2 style="font-weight:500;font-style:italic;margin-top:20px">Follow us @instant</h2>
 </main>
 <div class="footer-sub">

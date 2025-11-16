@@ -43,24 +43,26 @@
 </head>
 
 <body>
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg">
-    <div class="container">
-      <a class="navbar-brand" href="index.html">
-        <img src="traytayo-logo.png" alt="TrayTayo Logo" height="50">
-      </a>
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item"><a href="index.html" class="nav-link">HOME</a></li>
-        <li class="nav-item"><a href="#" class="nav-link">TRAYS</a></li>
-        <li class="nav-item"><a href="#" class="nav-link">BEST SELLER</a></li>
-        <li class="nav-item"><a href="#" class="nav-link">CHEFS</a></li>
-        <li class="nav-item"><a href="#" class="nav-link">ABOUT</a></li>
-      </ul>
-    </div>
-  </nav>
+  <a href="#main-content" class="skip-to-content">Skip to main content</a>
+  <header>
+    <nav class="navbar navbar-expand-lg" aria-label="Main navigation">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">
+          <img src="traytayo-logo.png" alt="TrayTayo food delivery service logo" height="50">
+        </a>
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a href="index.html" class="nav-link">HOME</a></li>
+          <li class="nav-item"><a href="#" class="nav-link">TRAYS</a></li>
+          <li class="nav-item"><a href="#" class="nav-link">BEST SELLER</a></li>
+          <li class="nav-item"><a href="#" class="nav-link">CHEFS</a></li>
+          <li class="nav-item"><a href="#" class="nav-link">ABOUT</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
 
-  <!-- Login Container -->
-  <div class="login-container text-center">
+  <main id="main-content" tabindex="-1">
+    <div class="login-container text-center">
     <h4 class="fw-bold mb-3" style="color:#4b2c1a;">Welcome to TrayTayo</h4>
     <p class="text-muted">Sign in to your account or create a new one</p>
 
@@ -79,13 +81,14 @@
       <!-- Login Tab -->
       <div class="tab-pane fade show active" id="login">
         <form>
+          <div class="form__error" aria-live="polite"></div>
           <div class="mb-3 text-start">
             <label>Email Address</label>
-            <input type="email" class="form-control" placeholder="your@email.com" required>
+            <input type="email" class="form__input form-input" placeholder="your@email.com" required>
           </div>
           <div class="mb-3 text-start">
             <label>Password</label>
-            <input type="password" class="form-control" placeholder="••••••••" required>
+            <input type="password" class="form__input form-input" placeholder="••••••••" required>
             <!-- 🔹 Added forgot password link -->
             <a href="#" class="text-decoration-none small float-end mt-1 forgot-password">Forgot password?</a>
           </div>
@@ -93,30 +96,35 @@
             <input class="form-check-input" type="checkbox" id="remember">
             <label class="form-check-label" for="remember">Remember me</label>
           </div>
-          <button type="submit" class="btn btn-login w-100">Login</button>
+          <button type="submit" class="form__button btn btn-primary w-100">Login</button>
+        <button type="submit" class="form__button btn btn-primary w-100">Sign Up</button>
         </form>
       </div>
 
       <!-- Sign Up Tab -->
       <div class="tab-pane fade" id="signup">
         <form>
+          <div class="form__error" aria-live="polite"></div>
           <div class="mb-3 text-start">
             <label>Full Name</label>
-            <input type="text" class="form-control" placeholder="Your name">
+            <input type="text" class="form__input form-input" placeholder="Your name">
           </div>
           <div class="mb-3 text-start">
             <label>Email Address</label>
-            <input type="email" class="form-control" placeholder="your@email.com">
+            <input type="email" class="form__input form-input" placeholder="your@email.com">
           </div>
           <div class="mb-3 text-start">
             <label>Password</label>
-            <input type="password" class="form-control" placeholder="Create password">
+            <input type="password" class="form__input form-input" placeholder="Create password">
           </div>
-          <button type="submit" class="btn btn-login w-100">Sign Up</button>
-        </form>
-      </div>
     </div>
-  </div>
+  </main>
+
+  <footer>
+    <div class="container text-center py-3">
+      <small>&copy; 2025 TrayTayo. All rights reserved.</small>
+    </div>
+  </footer>
 
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

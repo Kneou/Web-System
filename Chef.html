@@ -5,8 +5,43 @@
 <title>Reviews Page</title>
 <style>
 body{font-family:Arial,sans-serif;margin:0;padding:0;background:#fff;color:#222}
-header{background:#f9e8d9;padding:18px 28px;display:flex;justify-content:space-between;align-items:center}
-nav a{margin:0 10px;text-decoration:none;color:#000;font-size:14px}
+#navbar {
+  background-color: #f9d6aa;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 40px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+#navbar .logo img {
+  height: 50px;
+  width: auto;
+}
+#navbar nav {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+}
+#navbar nav ul {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+#navbar nav ul li {
+  margin: 0 15px;
+}
+#navbar nav ul li a {
+  text-decoration: none;
+  color: #2b2b2b;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 2000;
+  letter-spacing: 2px;
+}
+
 main{max-width:1100px;margin:40px auto;padding:0 20px;text-align:center}
 .section-title{font-size:24px;font-weight:700;margin-bottom:6px}
 .rating{margin-bottom:30px}
@@ -21,24 +56,55 @@ main{max-width:1100px;margin:40px auto;padding:0 20px;text-align:center}
 </style>
 </head>
 <body>
-<header>
-  <div>LOGO</div>
-  <div>TRAY TAYO</div>
+<a href="#main-content" class="skip-to-content">Skip to main content</a>
+<header id="navbar">
+  <div class="logo"><img src="img/logo.png" alt="TrayTayo Logo" height="50"></div>
   <nav>
-    <a href="#">HOME</a><a href="#">TRAYS</a><a href="#">BEST SELLER</a><a href="#">CHEFS</a><a href="#">ABOUT</a>
-  </nav>
-  <div>🔍 👤 🛒</div>
+  <ul>
+    <li><a href="index.html" class="nav-link">HOME</a></li>
+    <li><a href="Trays.html" class="nav-link">TRAYS</a></li>
+    <li><a href="Best-Seller.html" class="nav-link">BEST SELLER</a></li>
+    <li><a href="Chef.html" class="nav-link active">CHEFS</a></li>
+    <li><a href="About.html" class="nav-link">ABOUT</a></li>
+  </ul>
+</nav>
+  <div id="icons">
+    <i class="fas fa-search"></i>
+    <i class="fas fa-user"></i>
+    <i class="fas fa-shopping-cart"></i>
+  </div>
 </header>
 <main>
   <button onclick="window.location.href='index.html'" class="back-button" style="display:inline-flex;align-items:center;gap:8px;padding:10px 20px;margin:20px;background-color:#f9d6aa;color:#2b2b2b;text-decoration:none;border-radius:5px;font-weight:600;transition:all 0.3s ease;border:1px solid #d1a871;font-size:16px;"><i class='fas fa-arrow-left'></i> Back to Home</button>
-  </a>
-  <div class="section-title">Reviews from people like you</div>
-  <div class="rating">★★★★★ 4.9</div>
+  <div class="section-title">Meet Our Chefs</div>
+  <div style="margin-bottom:40px;font-size:18px;max-width:700px;margin-left:auto;margin-right:auto;">Our culinary team is led by passionate chefs who bring authentic Filipino flavors to every dish. Each chef is handpicked for their creativity, skill, and love for tradition.</div>
   <div class="grid">
-    <div class="card"><div class="thumb"></div><div class="meta">One of the best ever</div><p>Lorem ipsum dolor sit amet...</p></div>
-    <div class="card"><div class="thumb"></div><div class="meta">One of the best ever</div><p>Lorem ipsum dolor sit amet...</p></div>
-    <div class="card"><div class="thumb"></div><div class="meta">One of the best ever</div><p>Lorem ipsum dolor sit amet...</p></div>
+    <div class="card">
+      <picture class="thumb">
+        <source srcset="img/chef-jane.webp" type="image/webp">
+        <img src="img/chef-jane.jpg" alt="Chef Jane" style="width:100%;height:150px;object-fit:cover;border-radius:6px;">
+      </picture>
+      <div class="meta">Chef Jane Santos</div>
+      <p>With 15 years of experience, Jane specializes in Filipino comfort food and is known for her modern take on classic adobo.</p>
+    </div>
+    <div class="card">
+      <picture class="thumb">
+        <source srcset="img/chef-miguel.webp" type="image/webp">
+        <img src="img/chef-miguel.jpg" alt="Chef Miguel" style="width:100%;height:150px;object-fit:cover;border-radius:6px;">
+      </picture>
+      <div class="meta">Chef Miguel Reyes</div>
+      <p>Miguel brings farm-to-table philosophy to TrayTayo. He loves experimenting with local produce and sustainable seafood.</p>
+    </div>
+    <div class="card">
+      <picture class="thumb">
+        <source srcset="img/chef-liza.webp" type="image/webp">
+        <img src="img/chef-liza.jpg" alt="Chef Liza" style="width:100%;height:150px;object-fit:cover;border-radius:6px;">
+      </picture>
+      <div class="meta">Chef Liza Dela Cruz</div>
+      <p>Liza is a pastry expert who crafts the desserts that make every TrayTayo meal memorable. Her leche flan is a customer favorite.</p>
+    </div>
   </div>
+  <div style="margin:40px 0;font-size:16px;">Our chefs collaborate on every menu, blending tradition with innovation. <br><b>Timeline:</b><br>• 2023: Team formed<br>• 2024: Won "Best New Food Delivery Team"<br>• 2025: Launched chef's table events</div>
   <h2 style="font-weight:500;font-style:italic">Follow us @instant</h2>
   <div class="social-grid">
     <span>←</span>
