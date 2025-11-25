@@ -49,4 +49,14 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   });
 
+  // search function
+  function performSearch() {
+    const query = document.getElementById('searchInput').value.trim();
+    if(query) {
+      window.location.href = `Trays.html?search=${encodeURIComponent(query)}`;
+    } else {
+      alert("Please enter a search term.");
+    }
+  }
+
 });

@@ -1,189 +1,41 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Tray Tayo | Our Chefs</title>
-  <style>
-    body {
-      font-family: 'Poppins', Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #fff8f3;
-      color: #333;
-    }
-
-    /* Header */
-    header {
-      background-color: #f9e8d9;
-      padding: 16px 40px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border-bottom: 1px solid #e0d5c7;
-    }
-
-    header .logo {
-      font-weight: 700;
-      font-size: 18px;
-      color: #2c2c2c;
-    }
-
-    nav a {
-      text-decoration: none;
-      color: #222;
-      margin: 0 12px;
-      font-size: 15px;
-      font-weight: 500;
-      transition: color 0.2s ease;
-    }
-
-    nav a:hover {
-      color: #c05a00;
-    }
-
-    .icons {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 18px;
-    }
-
-    /* Main Section */
-    main {
-      max-width: 1100px;
-      margin: 50px auto;
-      padding: 0 20px;
-      text-align: center;
-    }
-
-    h1.section-title {
-      font-size: 32px;
-      font-weight: 700;
-      margin-bottom: 20px;
-      color: #222;
-    }
-
-    p.subtitle {
-      font-size: 15px;
-      color: #555;
-      margin-bottom: 50px;
-    }
-
-    /* Chef Cards */
-    .chef-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 30px;
-    }
-
-    .chef-card {
-      background: #fff;
-      border-radius: 12px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-      overflow: hidden;
-      text-align: center;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    .chef-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 6px 12px rgba(0,0,0,0.1);
-    }
-
-    .chef-card img {
-      width: 100%;
-      height: 250px;
-      object-fit: cover;
-    }
-
-    .chef-info {
-      padding: 18px;
-    }
-
-    .chef-info h3 {
-      margin: 0;
-      font-size: 18px;
-      font-weight: 600;
-      color: #333;
-    }
-
-    .chef-info p.specialty {
-      font-size: 14px;
-      color: #c05a00;
-      margin: 5px 0;
-      font-weight: 500;
-    }
-
-    .chef-info p.bio {
-      font-size: 13px;
-      color: #666;
-      margin-top: 8px;
-      line-height: 1.5;
-    }
-
-    /* Footer */
-    footer {
-      margin-top: 80px;
-      background: #f9e8d9;
-      padding: 30px 40px;
-      border-top: 1px solid #e0d5c7;
-    }
-
-    .footer-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 20px;
-    }
-
-    .footer-top label {
-      font-weight: 600;
-      font-size: 14px;
-    }
-
-    .footer-top input {
-      padding: 8px;
-      border: 1px solid #ddd;
-      border-radius: 4px;
-      width: 200px;
-    }
-
-    .footer-icons {
-      font-size: 20px;
-    }
-
-    .footer-bottom {
-      text-align: center;
-      margin-top: 25px;
-      font-size: 13px;
-      color: #555;
-    }
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Best Seller | Tray Tayo</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-
-<header>
-  <div class="logo">LOGO</div>
-  <div>TRAY TAYO</div>
-  <nav>
-    <a href="index.html">HOME</a>
-    <a href="trays.html">TRAYS</a>
-    <a href="bestseller.html">BEST SELLER</a>
-    <a href="chef.html" style="color:#c05a00; font-weight:600;">CHEFS</a>
-    <a href="about.html">ABOUT</a>
-  </nav>
-  <div class="icons">🔍 👤 🛒</div>
-</header>
+<header id="navbar">
+    <div class="logo"><img src="img/logo.png" alt="TrayTayo Logo"></div>
+    <nav>
+      <ul>
+        <li><a href="index.html">HOME</a></li>
+        <li><a href="Trays.html">TRAYS</a></li>
+        <li><a href="Best-Seller.html">BEST SELLER</a></li>
+        <li><a href="Chef.html">CHEFS</a></li>
+        <li><a href="About.html">ABOUT</a></li>
+      </ul>
+    </nav>
+    <div id="icons">
+    <a href="login.html">
+      <i class="fas fa-user"></i>
+    </a>
+    <a href="Cart-View.html">
+      <i class="fas fa-shopping-cart"></i>
+    </a>
+  </header>
 
 <main>
-  <h1 class="section-title">Our Chefs</h1>
-  <p class="subtitle">Meet the talented culinary artists behind every tray — the heart of Tray Tayo.</p>
+  <div class="section-title">OUR CHEFS</div>
+  <h2 class="section-subtitle">
+  Meet the talented culinary artists behind every tray — the heart of Tray Tayo.
+</h2>
 
   <div class="chef-grid">
     <div class="chef-card">
-      <img src="images/chef1.jpg" alt="Chef 1">
+      <img src="img\chef1.jpg" alt="Chef 1">
       <div class="chef-info">
         <h3>Chef Anna Ramos</h3>
         <p class="specialty">Pastry & Desserts</p>
@@ -192,7 +44,7 @@
     </div>
 
     <div class="chef-card">
-      <img src="images/chef2.jpg" alt="Chef 2">
+      <img src="img/chef2.jpg" alt="Chef 2">
       <div class="chef-info">
         <h3>Chef Marco Dela Cruz</h3>
         <p class="specialty">Filipino Fusion</p>
@@ -201,7 +53,7 @@
     </div>
 
     <div class="chef-card">
-      <img src="images/chef3.jpg" alt="Chef 3">
+      <img src="img/chef3.jpg" alt="Chef 3">
       <div class="chef-info">
         <h3>Chef Liza Santos</h3>
         <p class="specialty">Seafood & Grilled Dishes</p>
@@ -211,18 +63,15 @@
   </div>
 </main>
 
-<footer>
-  <div class="footer-top">
-    <div>
-      <label>SUBSCRIBE TO OUR EMAILS</label><br>
-      <input type="text" placeholder="Enter your email...">
+ <footer>
+    <div class="subscribe">SUBSCRIBE TO OUR EMAILS</div>
+    <div class="socials">
+      <i class="fas fa-globe"></i>
+      <i class="fab fa-instagram"></i>
+      <i class="fab fa-twitter"></i>
     </div>
-    <div class="footer-icons">📷 🖤 🐦</div>
-  </div>
-  <div class="footer-bottom">
-    © 2025 Tray Tayo. All rights reserved.
-  </div>
-</footer>
+  </footer>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/js/all.min.js"></script>
 
 </body>
 </html>
