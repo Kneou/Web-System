@@ -2,29 +2,131 @@
 document.addEventListener("DOMContentLoaded", function() {
 
   // === LOGIN FORM FUNCTIONALITY ===
-  const loginForm = document.getElementById("loginForm");
-
-  if (loginForm) {
-    loginForm.addEventListener("submit", function(e) {
-      e.preventDefault(); // Prevent form from refreshing the page
-
-      const username = document.getElementById("username").value.trim();
-      const password = document.getElementById("password").value.trim();
-
-      if (username === "" || password === "") {
-        alert("Please fill in both fields before logging in.");
+  // Inline validation for login form
+  const loginTab = document.querySelector('#login form');
+  if (loginTab) {
+    loginTab.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const errorDiv = loginTab.querySelector('.form__error');
+      const email = loginTab.querySelector('input[type="email"]');
+      const password = loginTab.querySelector('input[type="password"]');
+      let errorMsg = '';
+      if (!email.value.trim()) {
+        errorMsg = 'Email is required.';
+        email.setAttribute('aria-invalid', 'true');
+      } else if (!/^\S+@\S+\.\S+$/.test(email.value)) {
+        errorMsg = 'Please enter a valid email address.';
+        email.setAttribute('aria-invalid', 'true');
+      } else {
+        email.removeAttribute('aria-invalid');
+      }
+      if (!password.value.trim()) {
+        errorMsg = 'Password is required.';
+        password.setAttribute('aria-invalid', 'true');
+      } else {
+        password.removeAttribute('aria-invalid');
+      }
+      if (errorMsg) {
+        errorDiv.textContent = errorMsg;
         return;
       }
+      errorDiv.textContent = '';
+      // Proceed with Firebase login (handled elsewhere)
+    });
+  }
 
-      // Example validation — you can customize this later
-      if (username === "admin" && password === "1234") {
-        alert("✅ Login successful! Redirecting to home page...");
-        window.location.href = "index.html"; // Redirect to homepage
+  // Inline validation for signup form
+  const signupTab = document.querySelector('#signup form');
+  if (signupTab) {
+    signupTab.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const errorDiv = signupTab.querySelector('.form__error');
+      const name = signupTab.querySelector('input[type="text"]');
+      const email = signupTab.querySelector('input[type="email"]');
+      const password = signupTab.querySelector('input[type="password"]');
+      let errorMsg = '';
+      if (!name.value.trim()) {
+        errorMsg = 'Full name is required.';
+        name.setAttribute('aria-invalid', 'true');
       } else {
-        alert("❌ Invalid username or password. Please try again.");
+        name.removeAttribute('aria-invalid');
+      }
+      if (!email.value.trim()) {
+        errorMsg = 'Email is required.';
+        email.setAttribute('aria-invalid', 'true');
+      } else if (!/^\S+@\S+\.\S+$/.test(email.value)) {
+        errorMsg = 'Please enter a valid email address.';
+        email.setAttribute('aria-invalid', 'true');
+      } else {
+        email.removeAttribute('aria-invalid');
+      }
+      if (!password.value.trim()) {
+        errorMsg = 'Password is required.';
+        password.setAttribute('aria-invalid', 'true');
+      } else if (password.value.length < 6) {
+        errorMsg = 'Password must be at least 6 characters.';
+        password.setAttribute('aria-invalid', 'true');
+      } else {
+        password.removeAttribute('aria-invalid');
+      }
+      if (errorMsg) {
+        errorDiv.textContent = errorMsg;
+        return;
+      }
+      errorDiv.textContent = '';
+      // Proceed with Firebase signup (handled elsewhere)
+    });
+  }
+
+  // === ACCESSIBILITY: Focus trap for active tab panel ===
+  function trapFocus(element) {
+    const focusableEls = element.querySelectorAll('a, button, textarea, input, select, [tabindex]:not([tabindex="-1"])');
+    const firstFocusable = focusableEls[0];
+    const lastFocusable = focusableEls[focusableEls.length - 1];
+    element.addEventListener('keydown', function(e) {
+      if (e.key === 'Tab') {
+        if (e.shiftKey) {
+          if (document.activeElement === firstFocusable) {
+            e.preventDefault();
+            lastFocusable.focus();
+          }
+        } else {
+          if (document.activeElement === lastFocusable) {
+            e.preventDefault();
+            firstFocusable.focus();
+          }
+        }
       }
     });
   }
+
+  // Trap focus in active tab panel
+  const tabPanels = document.querySelectorAll('.tab-pane');
+  tabPanels.forEach(panel => {
+    panel.addEventListener('shown.bs.tab', function() {
+      trapFocus(panel);
+      // Focus first input
+      const input = panel.querySelector('input, button');
+      if (input) input.focus();
+    });
+  });
+
+  // === ACCESSIBILITY: ESC closes modals/menus ===
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      // Example: close any open modal (Bootstrap modal or custom)
+      const openModal = document.querySelector('.modal.show');
+      if (openModal) {
+        const closeBtn = openModal.querySelector('[data-bs-dismiss="modal"]');
+        if (closeBtn) closeBtn.click();
+      }
+      // Example: collapse nav menu if open
+      const navMenu = document.querySelector('.navbar-collapse.show');
+      if (navMenu) {
+        navMenu.classList.remove('show');
+      }
+    }
+  });
 
   // === NAVBAR SCROLL EFFECT (Optional Enhancement) ===
   const navbar = document.querySelector(".navbar");

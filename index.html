@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tray Tayo</title>
   <link rel="stylesheet" href="css/style.css">
+  <link rel="preload" href="https://fonts.googleapis.com/css?family=Poppins:400,600&display=swap" as="style" onload="this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:400,600&display=swap"></noscript>
 </head>
 <body>
 
@@ -50,7 +52,10 @@
 
       <a href="Beef-Category.html" style="text-decoration: none; color: inherit;">
         <div class="card">
-          <img src="img/Beef/kare kare.jpg" alt="Beef Kare-Kare">
+          <picture>
+  <source srcset="img/Beef/kare kare.webp" type="image/webp">
+  <img src="img/Beef/kare kare.jpg" alt="Beef Kare-Kare" loading="lazy" style="aspect-ratio:4/3;width:100%;height:auto;">
+</picture>
           <div class="food-description">Tender beef in rich peanut sauce with fresh vegetables</div>
           <p>Beef</p>
         </div>
@@ -58,7 +63,10 @@
 
       <a href="Chicken-Category.html" style="text-decoration: none; color: inherit;">
         <div class="card">
-          <img src="img/Chicken/Chicken adobo.png" alt="Chicken">
+          <picture>
+  <source srcset="img/Chicken/Chicken adobo.webp" type="image/webp">
+  <img src="img/Chicken/Chicken adobo.png" alt="Chicken" loading="lazy" style="aspect-ratio:4/3;width:100%;height:auto;">
+</picture>
           <div class="food-description">Classic Filipino chicken adobo with soy sauce and vinegar</div>
           <p>Chicken</p>
         </div>
@@ -66,7 +74,10 @@
 
       <a href="Pork-Category.html" style="text-decoration: none; color: inherit;">
         <div class="card">
-          <img src="img/Pork/pork ribs.jpg" alt="Pork Ribs">
+          <picture>
+  <source srcset="img/Pork/pork ribs.webp" type="image/webp">
+  <img src="img/Pork/pork ribs.jpg" alt="Pork Ribs" loading="lazy" style="aspect-ratio:4/3;width:100%;height:auto;">
+</picture>
           <div class="food-description">Succulent pork ribs with special house sauce</div>
           <p>Pork</p>
         </div>
@@ -74,7 +85,10 @@
       
       <a href="Vegetables-Category.html" style="text-decoration: none; color: inherit;">
         <div class="card">
-          <img src="img/Vegetables/chopseuy.jpg" alt="Chopseuy">
+          <picture>
+  <source srcset="img/Vegetables/chopseuy.webp" type="image/webp">
+  <img src="img/Vegetables/chopseuy.jpg" alt="Chopseuy" loading="lazy" style="aspect-ratio:4/3;width:100%;height:auto;">
+</picture>
           <div class="food-description">Fresh mixed vegetables with shrimp and pork</div>
           <p>Vegetables</p>
         </div>
@@ -90,7 +104,10 @@
 
      <a href="Dessert-Category.html" style="text-decoration: none; color: inherit;">
         <div class="card">
-          <img src="img/Dessert/buko pandan.jpg" alt="Buko Pandan">
+          <picture>
+  <source srcset="img/Dessert/buko pandan.webp" type="image/webp">
+  <img src="img/Dessert/buko pandan.jpg" alt="Buko Pandan" loading="lazy" style="aspect-ratio:4/3;width:100%;height:auto;">
+</picture>
           <div class="food-description">Refreshing coconut and pandan flavored dessert</div>
           <p>Desserts</p>
         </div>
@@ -111,7 +128,7 @@
   </footer>
 
   <!-- Font Awesome Icons -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/js/all.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/js/all.min.js" defer></script>
 
   <script>
     // Cart management functions

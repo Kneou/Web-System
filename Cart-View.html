@@ -34,6 +34,7 @@
   <!-- Left Side: Items -->
   <div class="cart-items">
     <h2 class="cart-title">Your Cart</h2>
+    <div id="cart-error" class="cart__error" aria-live="polite" style="display:none;color:#b71c1c;margin-bottom:12px;"></div>
     <div id="cart-items-list">
       <!-- Cart items will be dynamically loaded here -->
     </div>
@@ -120,31 +121,45 @@
 
     function updateQuantity(itemId, servingSize, change) {
       let cart = getCart();
+      const errorDiv = document.getElementById('cart-error');
       const itemIndex = cart.findIndex(item => 
         item.id === itemId && item.servingSize === servingSize
       );
 
       if (itemIndex > -1) {
-        cart[itemIndex].quantity += change;
-        
-        if (cart[itemIndex].quantity <= 0) {
-          cart.splice(itemIndex, 1);
-        } else {
-          cart[itemIndex].totalPrice = cart[itemIndex].price * cart[itemIndex].quantity;
+        if (cart[itemIndex].quantity + change < 1) {
+          errorDiv.textContent = 'Quantity cannot be less than 1. Remove the item if you do not want it.';
+          errorDiv.style.display = 'block';
+          return;
         }
-        
+        cart[itemIndex].quantity += change;
+        cart[itemIndex].totalPrice = cart[itemIndex].price * cart[itemIndex].quantity;
         saveCart(cart);
         loadCartItems();
         updateCartIcon();
+        errorDiv.textContent = '';
+        errorDiv.style.display = 'none';
+      } else {
+        errorDiv.textContent = 'Unable to update item. Please refresh the page.';
+        errorDiv.style.display = 'block';
       }
     }
 
     function removeItem(itemId, servingSize) {
       let cart = getCart();
+      const errorDiv = document.getElementById('cart-error');
+      const initialLength = cart.length;
       cart = cart.filter(item => !(item.id === itemId && item.servingSize === servingSize));
+      if (cart.length === initialLength) {
+        errorDiv.textContent = 'Item not found in cart.';
+        errorDiv.style.display = 'block';
+        return;
+      }
       saveCart(cart);
       loadCartItems();
       updateCartIcon();
+      errorDiv.textContent = '';
+      errorDiv.style.display = 'none';
     }
 
     function loadCartItems() {
@@ -166,7 +181,7 @@
 
       cartItemsList.innerHTML = cart.map(item => `
         <div class="cart-item">
-          <img src="${item.image}" alt="${item.name}" onerror="this.src='img/logo.png'">
+          <img src="${item.image}" alt="${item.name}" onerror="this.onerror=null;this.src='img/logo.png';">
           <div class="item-info">
             <h4>${item.name}</h4>
             <p class="available">✔ Available Today</p>
@@ -209,11 +224,14 @@
 
     function proceedToCheckout() {
       const cart = getCart();
+      const errorDiv = document.getElementById('cart-error');
       if (cart.length === 0) {
-        alert('Your cart is empty!');
+        errorDiv.textContent = 'Your cart is empty! Add items before checking out.';
+        errorDiv.style.display = 'block';
         return;
       }
-
+      errorDiv.textContent = '';
+      errorDiv.style.display = 'none';
       // Calculate total
       const subtotal = cart.reduce((sum, item) => sum + item.totalPrice, 0);
       const tax = Math.round(subtotal * 0.12);
@@ -229,9 +247,18 @@
     }
 
     // Initialize cart on page load
+    // Debounce utility
+    function debounce(fn, delay) {
+      let timer = null;
+      return function(...args) {
+        clearTimeout(timer);
+        timer = setTimeout(() => fn.apply(this, args), delay);
+      };
+    }
+
     window.addEventListener('DOMContentLoaded', () => {
-      loadCartItems();
-      updateCartIcon();
+      if (typeof loadCartItems === 'function') loadCartItems();
+      if (typeof updateCartIcon === 'function') updateCartIcon();
       
       // Add cart icon click functionality
       const cartIcon = document.querySelector('.fa-shopping-cart');
@@ -247,5 +274,7 @@
       if (checkoutBtn) {
         checkoutBtn.addEventListener('click', proceedToCheckout);
       }
+
+      // (Stub for modal cleanup: no modal present, but if added, remove listeners here)
     });
   </script>
