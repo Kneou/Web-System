@@ -6,6 +6,12 @@ body {
   color: #333;
 }
 
+.page-container {
+  max-width: 1200px;   
+  margin: 0 auto;      
+  padding: 0 20px;     
+}
+
 /* Navbar */
 #navbar {
   background-color: #f9d6aa;
@@ -65,42 +71,6 @@ body {
 #icons i {
   display: block;  
 }
-
-
-/* Search Bar */
-.search-bar {
-  display: flex;
-  max-width: 400px;
-  margin: 20px auto;
-  border: 1px solid #d1a871;
-  border-radius: 8px;
-  overflow: hidden;
-  background: #f8efe4;
-}
-
-.search-bar input {
-  flex: 1;
-  padding: 10px 15px;
-  border: none;
-  outline: none;
-  font-family: "Poppins", sans-serif;
-  font-size: 14px;
-}
-
-.search-bar button {
-  background-color: #f3d7b6;
-  border: none;
-  padding: 0 15px;
-  cursor: pointer;
-  transition: 0.3s;
-  color: #5d3f23;
-  font-size: 16px;
-}
-
-.search-bar button:hover {
-  background-color: #eacaa3;
-}
-
 
 /* Footer */
 #footer {
@@ -235,7 +205,7 @@ body {
 
 /* ========== HOMEPAGE STYLES ========== */
 .hero {
-  background-color: #f5d1a241;
+  background-color: #f9d5aa73;
   text-align: center;
   padding: 100px 20px;
 
@@ -280,7 +250,7 @@ body {
   gap: 20px;
 }
 .card {
-  background-color: #ebe2d6;
+  background-color: #f9d5aa73;
   border-radius: 10px;
   overflow: hidden;
   text-align: center;
@@ -675,24 +645,6 @@ body {
   background: #ffffff;
 }
 
-/* ========== Login Container ========== */
-.login-container {
-  max-width: 400px;
-  margin: 100px auto;
-  background: #ebe2d6;
-  border-radius: 16px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-  padding: 40px 35px;
-  text-align: center;
-  transition: all 0.3s ease;
-}
-
-/* Add a subtle hover lift effect */
-.login-container:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
-}
-
 /* Inputs */
 .login-container .form-control {
   border-radius: 10px;
@@ -858,7 +810,7 @@ body {
       margin-top: 50px;
       padding: 20px;
       border-radius: 10px;
-      background: rgba(216, 165, 129, 0.438); 
+      background: #f9d5aa73; 
       box-shadow: 0 3px 10px rgba(0, 0, 0, 0.267);
     }
 
@@ -927,8 +879,9 @@ body {
 
     .chef-card img {
       width: 100%;
-      height: 250px;
+      height: 400px;
       object-fit: cover;
+      object-position: center;
     }
 
     .chef-info {
