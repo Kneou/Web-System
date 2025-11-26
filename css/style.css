@@ -197,7 +197,7 @@ body {
   border: none;
   cursor: pointer;
   padding: 8px;
-  margin-left: auto;
+  flex-shrink: 0;
 }
 
 #menu-toggle span {
@@ -222,16 +222,19 @@ body {
 
 @media (max-width: 900px) {
   #navbar {
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     padding: 12px 20px;
     align-items: center;
   }
 
   #menu-toggle {
-    display: block;
-    order: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     margin-left: auto;
-    margin-right: 10px;
+    order: 2;
+    flex-shrink: 0;
   }
 
   #navbar nav {
