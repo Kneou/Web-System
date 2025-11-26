@@ -19,68 +19,86 @@
       </ul>
     </nav>
     <div id="icons">
-      <i class="fas fa-search"></i>
-      <i class="fas fa-user"></i>
-      <i class="fas fa-shopping-cart" onclick="window.location.href='Cart-View.html'" style="cursor:pointer;"></i>
+      <a href="login.html">
+        <i class="fas fa-user"></i>
+      </a>
+      <a href="Cart-View.html">
+        <i class="fas fa-shopping-cart"></i>
+      </a>
     </div>
   </header>
 
   <main>
-    <h2 style="margin-top:40px;text-align:center;letter-spacing:2px;font-family:serif;">FAMILY TRAY</h2>
+    <h2 class="page-title">FAMILY TRAY</h2>
     <div class="cards" style="margin:auto;max-width:1100px;">
-      <!-- Example product (repeat for each tray) -->
-      <div class="card">
-        <img src="img/Beef/Kare-Kare-Beef-and-Goto.jpg" alt="Beef Kare Kare">
-        <div style="font-weight:bold;font-size:14px;">Beef Kare Kare</div>
-        <div style="font-size:13px;">₱950</div>
-        <div style="font-size:12px;color:#888;">3-6 pax</div>
-      </div>
-      <div class="card">
-        <img src="img/Chicken/Chicken adobo.png" alt="Chicken Adobo">
-        <div style="font-weight:bold;font-size:14px;">Chicken Adobo</div>
-        <div style="font-size:13px;">₱780</div>
-        <div style="font-size:12px;color:#888;">3-6 pax</div>
-      </div>
-      <div class="card">
-        <img src="img/Pork/Braised Pork.jpg" alt="Braised Pork">
-        <div style="font-weight:bold;font-size:14px;">Braised Pork</div>
-        <div style="font-size:13px;">₱920</div>
-        <div style="font-size:12px;color:#888;">3-6 pax</div>
-      </div>
-      <div class="card">
-        <img src="img/Vegetables/chopseuy.jpg" alt="Chopseuy">
-        <div style="font-weight:bold;font-size:14px;">Chopseuy</div>
-        <div style="font-size:13px;">₱680</div>
-        <div style="font-size:12px;color:#888;">3-6 pax</div>
-      </div>
-      <div class="card">
-        <img src="img/Dessert/buko pandan.jpg" alt="Buko Pandan">
-        <div style="font-weight:bold;font-size:14px;">Buko Pandan</div>
-        <div style="font-size:13px;">₱450</div>
-        <div style="font-size:12px;color:#888;">Dessert</div>
-      </div>
+      <a href="Product-View.html?product=beef-kare-kare" style="text-decoration: none; color: inherit;">
+        <div class="card">
+          <img src="img/Beef/Kare-Kare-Beef-and-Goto.jpg" alt="Beef Kare Kare">
+          <div style="font-weight:bold;font-size:14px;">Beef Kare Kare</div>
+          <div style="font-size:13px;">₱950</div>
+          <div style="font-size:12px;color:#888;">3-6 pax</div>
+        </div>
+      </a>
+      <a href="Product-View.html?product=chicken-adobo" style="text-decoration: none; color: inherit;">
+        <div class="card">
+          <img src="img/Chicken/Chicken adobo.png" alt="Chicken Adobo">
+          <div style="font-weight:bold;font-size:14px;">Chicken Adobo</div>
+          <div style="font-size:13px;">₱780</div>
+          <div style="font-size:12px;color:#888;">3-6 pax</div>
+        </div>
+      </a>
+      <a href="Product-View.html?product=braised-pork" style="text-decoration: none; color: inherit;">
+        <div class="card">
+          <img src="img/Pork/Braised Pork.jpg" alt="Braised Pork">
+          <div style="font-weight:bold;font-size:14px;">Braised Pork</div>
+          <div style="font-size:13px;">₱920</div>
+          <div style="font-size:12px;color:#888;">3-6 pax</div>
+        </div>
+      </a>
+      <a href="Product-View.html?product=chopseuy" style="text-decoration: none; color: inherit;">
+        <div class="card">
+          <img src="img/Vegetables/chopseuy.jpg" alt="Chopseuy">
+          <div style="font-weight:bold;font-size:14px;">Chopseuy</div>
+          <div style="font-size:13px;">₱680</div>
+          <div style="font-size:12px;color:#888;">3-6 pax</div>
+        </div>
+      </a>
+      <a href="Product-View.html?product=buko-pandan" style="text-decoration: none; color: inherit;">
+        <div class="card">
+          <img src="img/Dessert/buko pandan.jpg" alt="Buko Pandan">
+          <div style="font-weight:bold;font-size:14px;">Buko Pandan</div>
+          <div style="font-size:13px;">₱450</div>
+          <div style="font-size:12px;color:#888;">Dessert</div>
+        </div>
+      </a>
     </div>
 
-    <h2 style="margin-top:60px;text-align:center;letter-spacing:2px;font-family:serif;">BUNDLES</h2>
+    <h2 class="page-title" style="margin-top:60px;">BUNDLES</h2>
     <div class="cards" style="margin:auto;max-width:1100px;">
-      <div class="card">
-        <img src="img/Chicken/Chicken Wings.png" alt="Chicken Wings">
-        <div style="font-weight:bold;font-size:14px;">Chicken Wings Bundle</div>
-        <div style="font-size:13px;">₱1200</div>
-        <div style="font-size:12px;color:#888;">Bundle</div>
-      </div>
-      <div class="card">
-        <img src="img/Beef/beef caldereta.jpg" alt="Beef Caldereta">
-        <div style="font-weight:bold;font-size:14px;">Beef Caldereta Bundle</div>
-        <div style="font-size:13px;">₱1450</div>
-        <div style="font-size:12px;color:#888;">Bundle</div>
-      </div>
-      <div class="card">
-        <img src="img/Vegetables/Ginisang Monggo with Kalabasa.png" alt="Ginisang Monggo with Kalabasa">
-        <div style="font-weight:bold;font-size:14px;">Ginisang Monggo Bundle</div>
-        <div style="font-size:13px;">₱980</div>
-        <div style="font-size:12px;color:#888;">Bundle</div>
-      </div>
+      <a href="Product-View.html?product=chicken-wings" style="text-decoration: none; color: inherit;">
+        <div class="card">
+          <img src="img/Chicken/Chicken Wings.png" alt="Chicken Wings">
+          <div style="font-weight:bold;font-size:14px;">Chicken Wings Bundle</div>
+          <div style="font-size:13px;">₱1200</div>
+          <div style="font-size:12px;color:#888;">Bundle</div>
+        </div>
+      </a>
+      <a href="Product-View.html?product=beef-caldereta" style="text-decoration: none; color: inherit;">
+        <div class="card">
+          <img src="img/Beef/beef caldereta.jpg" alt="Beef Caldereta">
+          <div style="font-weight:bold;font-size:14px;">Beef Caldereta Bundle</div>
+          <div style="font-size:13px;">₱1450</div>
+          <div style="font-size:12px;color:#888;">Bundle</div>
+        </div>
+      </a>
+      <a href="Product-View.html?product=ginisang-monggo-kalabasa" style="text-decoration: none; color: inherit;">
+        <div class="card">
+          <img src="img/Vegetables/Ginisang Monggo with Kalabasa.png" alt="Ginisang Monggo with Kalabasa">
+          <div style="font-weight:bold;font-size:14px;">Ginisang Monggo Bundle</div>
+          <div style="font-size:13px;">₱980</div>
+          <div style="font-size:12px;color:#888;">Bundle</div>
+        </div>
+      </a>
     </div>
   </main>
 
@@ -93,5 +111,67 @@
     </div>
   </footer>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/js/all.min.js"></script>
+
+  <script>
+    // Cart management functions
+    function getCart() {
+      const cart = localStorage.getItem('cart');
+      return cart ? JSON.parse(cart) : [];
+    }
+
+    function updateCartIcon() {
+      const cart = getCart();
+      const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+      
+      // Update cart icon in navbar
+      const cartIcon = document.querySelector('.fa-shopping-cart');
+      if (cartIcon) {
+        // Remove existing badge if any
+        const existingBadge = cartIcon.parentElement.querySelector('.cart-badge');
+        if (existingBadge) {
+          existingBadge.remove();
+        }
+        
+        // Add badge if there are items
+        if (totalItems > 0) {
+          const badge = document.createElement('span');
+          badge.className = 'cart-badge';
+          badge.textContent = totalItems;
+          badge.style.cssText = `
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: #ff4444;
+            color: white;
+            border-radius: 50%;
+            width: 22px;
+            height: 22px;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+          `;
+          cartIcon.parentElement.style.position = 'relative';
+          cartIcon.parentElement.appendChild(badge);
+        }
+      }
+    }
+
+    // Initialize cart icon on page load
+    window.addEventListener('DOMContentLoaded', () => {
+      updateCartIcon();
+      
+      // Add cart icon click functionality
+      const cartIcon = document.querySelector('.fa-shopping-cart');
+      if (cartIcon) {
+        cartIcon.addEventListener('click', () => {
+          window.location.href = 'Cart-View.html';
+        });
+        cartIcon.style.cursor = 'pointer';
+      }
+    });
+  </script>
+  <script src="js/navbar.js"></script>
 </body>
 </html>

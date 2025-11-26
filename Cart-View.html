@@ -22,9 +22,12 @@
       </ul>
     </nav>
     <div id="icons">
-      <i class="fas fa-search"></i>
-      <i class="fas fa-user"></i>
-      <i class="fas fa-shopping-cart" onclick="window.location.href='Cart-View.html'" style="cursor:pointer;"></i>
+      <a href="login.html">
+        <i class="fas fa-user"></i>
+      </a>
+      <a href="Cart-View.html">
+        <i class="fas fa-shopping-cart"></i>
+      </a>
     </div>
   </header>
 
@@ -174,12 +177,14 @@
             <p class="serving-size">Serving: ${item.servingSize === 'small' ? '3-6 pax' : item.servingSize === 'medium' ? '10-15 pax' : '20-25 pax'}</p>
           </div>
           <div class="item-actions">
-            <button class="qty-btn" onclick="updateQuantity('${item.id}', '${item.servingSize}', -1)">-</button>
-            <input type="text" value="${item.quantity}" readonly>
-            <button class="qty-btn" onclick="updateQuantity('${item.id}', '${item.servingSize}', 1)">+</button>
+            <button class="qty-btn" onclick="updateQuantity('${item.id}', '${item.servingSize}', -1)" aria-label="Decrease quantity">-</button>
+            <input type="text" value="${item.quantity}" readonly aria-label="Quantity">
+            <button class="qty-btn" onclick="updateQuantity('${item.id}', '${item.servingSize}', 1)" aria-label="Increase quantity">+</button>
           </div>
           <div class="price">₱${item.totalPrice.toLocaleString()}</div>
-          <button class="remove-btn" onclick="removeItem('${item.id}', '${item.servingSize}')" style="background: #ff4444; color: white; border: none; padding: 5px 10px; border-radius: 3px; cursor: pointer; margin-left: 10px;">Remove</button>
+          <button class="remove-btn" onclick="removeItem('${item.id}', '${item.servingSize}')" aria-label="Remove item">
+            <i class="fas fa-trash-alt"></i> Remove
+          </button>
         </div>
       `).join('');
 
@@ -250,3 +255,4 @@
       }
     });
   </script>
+  <script src="js/navbar.js"></script>
