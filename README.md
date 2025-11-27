@@ -2,6 +2,8 @@
 
 A modern Filipino food delivery web system.
 
+Video Walkthrough: https://drive.google.com/file/d/1UwFDgjKkbrwWHPuE34Q9bZ68MSewifOb/view?usp=drivesdk
+
 ## Quick Start
 
 1. **Clone or download** this repo.
